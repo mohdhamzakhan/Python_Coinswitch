@@ -1,0 +1,47 @@
+# Web framework
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+jinja2==3.1.4
+python-multipart==0.0.9
+aiofiles==23.2.1
+
+# HTTP / WebSocket
+httpx==0.27.0
+websockets==12.0
+tenacity==8.3.0
+
+# Database
+sqlalchemy==2.0.30
+aiosqlite==0.20.0
+alembic==1.13.1
+
+# Settings / Config
+pydantic==2.7.1
+pydantic-settings==2.2.1
+python-dotenv==1.0.1
+
+# Security / Encryption
+python-jose[cryptography]==3.3.0
+cryptography==42.0.7
+passlib[bcrypt]==1.7.4
+
+# Scheduling
+apscheduler==3.10.4
+
+# Data / Analysis
+pandas==2.2.2
+numpy==1.26.4
+ta==0.11.0
+
+# Logging
+loguru==0.7.2
+
+# Alerts (optional)
+python-telegram-bot==21.3
+
+# Database extras (optional - for PostgreSQL)
+psycopg2-binary==2.9.9
+
+# Testing
+pytest==8.2.0
+pytest-asyncio==0.23.7

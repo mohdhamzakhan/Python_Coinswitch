@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ app_name }} – Settings</title>
+  <style>
+    :root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--green:#3fb950;--red:#f85149;--blue:#58a6ff;--yellow:#d29922;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;}
+    nav{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-size:18px;font-weight:700;color:var(--blue);}
+    nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px;}
+    nav a:hover,nav a.active{color:var(--text);}
+    .container{max-width:960px;margin:0 auto;padding:28px 24px;}
+    .section{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:24px;}
+    .sec-title{font-size:15px;font-weight:700;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+    .fg label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+    .fg input,.fg select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:9px 12px;color:var(--text);font-size:13px;}
+    .fg input:focus,.fg select:focus{outline:none;border-color:var(--blue);}
+    .btn{padding:9px 20px;border-radius:6px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:opacity .2s;}
+    .btn:hover{opacity:.85;}
+    .btn-blue{background:var(--blue);color:#000;}
+    .btn-red{background:var(--red);color:#fff;}
+    .btn-green{background:var(--green);color:#000;}
+    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text);}
+    .alert{padding:10px 14px;border-radius:6px;font-size:13px;margin-top:12px;}
+    .alert-ok{background:rgba(63,185,80,.12);border:1px solid rgba(63,185,80,.3);color:var(--green);}
+    .alert-err{background:rgba(248,81,73,.12);border:1px solid rgba(248,81,73,.3);color:var(--red);}
+    .strat-card{border:1px solid var(--border);border-radius:8px;margin-bottom:12px;overflow:hidden;}
+    .strat-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;user-select:none;}
+    .strat-head:hover{background:rgba(255,255,255,.03);}
+    .strat-body{padding:16px;border-top:1px solid var(--border);display:none;}
+    .strat-body.open{display:block;}
+    .toggle{position:relative;display:inline-block;width:42px;height:22px;flex-shrink:0;}
+    .toggle input{opacity:0;width:0;height:0;}
+    .slider{position:absolute;cursor:pointer;inset:0;background:var(--border);border-radius:22px;transition:.3s;}
+    .slider:before{content:'';position:absolute;height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;}
+    input:checked+.slider{background:var(--green);}
+    input:checked+.slider:before{transform:translateX(20px);}
+    .risk-box{background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.25);border-radius:8px;padding:16px;}
+    .hint{font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6;}
+    code{background:rgba(255,255,255,.06);padding:1px 5px;border-radius:3px;font-family:monospace;font-size:12px;}
+  </style>
+</head>
+<body>
+<nav>
+  <span class="logo">⚡ {{ app_name }}</span>
+  <div>
+    <a href="/">Dashboard</a>
+    <a href="/settings-page" class="active">Settings</a>
+    <a href="/backtest-page">Backtest</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- API Credentials -->
+  <div class="section">
+    <div class="sec-title">🔑 API Credentials</div>
+    <p class="hint">Get your credentials from the <a href="https://coinswitch.co/hft" target="_blank" style="color:var(--blue)">CoinSwitch HFT portal</a>. The secret is a <strong>64-character hex Ed25519 private key</strong>. Credentials are encrypted in the database.</p>
+    <div class="grid2">
+      <div class="fg">
+        <label>API Key</label>
+        <input type="text" id="apiKey" placeholder="Paste API key…" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="fg">
+        <label>API Secret (64-char hex)</label>
+        <input type="password" id="apiSecret" placeholder="Paste 64-char hex secret…" autocomplete="off">
+      </div>
+    </div>
+    <button class="btn btn-blue" style="margin-top:16px" onclick="saveCredentials()">Save &amp; Activate</button>
+    <div id="credResult"></div>
+  </div>
+
+  <!-- Exchange Guide -->
+  <div class="section">
+    <div class="sec-title">🏦 Exchange &amp; Symbol Reference</div>
+    <div class="grid2">
+      <div style="padding:14px;border:1px solid var(--border);border-radius:8px;">
+        <div style="font-weight:700;color:var(--blue);margin-bottom:6px;">INR Pairs</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">Exchange: <code>coinswitchx</code> or <code>wazirx</code></div>
+        <div style="font-size:13px;">Symbols: <code style="color:var(--green)">BTC/INR</code> <code style="color:var(--green)">ETH/INR</code> <code style="color:var(--green)">SHIB/INR</code></div>
+      </div>
+      <div style="padding:14px;border:1px solid var(--border);border-radius:8px;">
+        <div style="font-weight:700;color:var(--yellow);margin-bottom:6px;">USDT Pairs</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">Exchange: <code>c2c1</code> or <code>c2c2</code></div>
+        <div style="font-size:13px;">Symbols: <code style="color:var(--green)">BTC/USDT</code> <code style="color:var(--green)">ETH/USDT</code> <code style="color:var(--green)">SOL/USDT</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trading Settings -->
+  <div class="section">
+    <div class="sec-title">⚙️ Trading Settings</div>
+    <div class="grid3">
+      <div class="fg">
+        <label>Default Trade Size (INR)</label>
+        <input type="number" id="set_trade_size_usdt" value="1000" min="1">
+      </div>
+      <div class="fg">
+        <label>Max Open Positions</label>
+        <input type="number" id="set_max_open_positions" value="5" min="1">
+      </div>
+      <div class="fg">
+        <label>Max Position Size (%)</label>
+        <input type="number" id="set_max_position_size_percent" value="10" min="1" max="100">
+      </div>
+      <div class="fg">
+        <label>Max Daily Loss (%)</label>
+        <input type="number" id="set_max_daily_loss_percent" value="5" min="0.1" step="0.1">
+      </div>
+      <div class="fg">
+        <label>Simulation Mode</label>
+        <select id="set_simulation_mode">
+          <option value="true">Enabled (paper trading)</option>
+          <option value="false">Disabled (live trading)</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-blue" style="margin-top:16px" onclick="saveTradingSettings()">Save Settings</button>
+    <div id="tradingResult"></div>
+  </div>
+
+  <!-- Risk -->
+  <div class="section">
+    <div class="sec-title">🛡️ Risk Management</div>
+    <div class="risk-box">
+      <p style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:6px;">Emergency Kill Switch</p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">Immediately stops all strategy execution. Does not cancel exchange orders automatically.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <button class="btn btn-red" onclick="stopTrading()">⛔ Stop All Trading</button>
+        <button class="btn btn-green" onclick="resumeTrading()">✓ Resume Trading</button>
+      </div>
+    </div>
+    <div id="riskResult" style="margin-top:12px;"></div>
+  </div>
+
+  <!-- Strategy Configuration -->
+  <div class="section">
+    <div class="sec-title">🤖 Strategy Configuration</div>
+    <p class="hint">Click a strategy to expand its settings. The symbol must match the exchange — INR pairs on coinswitchx/wazirx, USDT pairs on c2c1/c2c2.</p>
+    <div id="strategiesConfig"><div style="color:var(--muted);font-size:13px;padding:20px;text-align:center;">Loading…</div></div>
+    <div id="strategyResult"></div>
+  </div>
+
+</div>
+
+<script>
+const STRAT_PARAMS = {
+  ma_crossover: [
+    {key:'fast_period', label:'Fast MA Period',  type:'number',default:9,   step:1},
+    {key:'slow_period', label:'Slow MA Period',  type:'number',default:21,  step:1},
+    {key:'timeframe',   label:'Timeframe',       type:'text',  default:'1h'},
+    {key:'quantity',    label:'Order Qty (base)',type:'number',default:0.001,step:0.001},
+  ],
+  rsi_strategy: [
+    {key:'rsi_period', label:'RSI Period',       type:'number',default:14, step:1},
+    {key:'oversold',   label:'Oversold Level',   type:'number',default:30, step:1},
+    {key:'overbought', label:'Overbought Level', type:'number',default:70, step:1},
+    {key:'timeframe',  label:'Timeframe',        type:'text',  default:'1h'},
+    {key:'quantity',   label:'Order Qty (base)', type:'number',default:0.001,step:0.001},
+  ],
+  grid_trading: [
+    {key:'grid_levels',       label:'Grid Levels',   type:'number',default:10,  step:1},
+    {key:'lower_price',       label:'Lower Price',   type:'number',default:0,   step:1},
+    {key:'upper_price',       label:'Upper Price',   type:'number',default:0,   step:1},
+    {key:'quantity_per_grid', label:'Qty per Grid',  type:'number',default:0.001,step:0.001},
+  ],
+  dca_bot: [
+    {key:'interval_minutes',label:'Interval (min)', type:'number',default:60,  step:1},
+    {key:'max_entries',     label:'Max Entries',    type:'number',default:10,  step:1},
+    {key:'rsi_threshold',   label:'RSI Threshold',  type:'number',default:40,  step:1},
+    {key:'quantity',        label:'Order Qty (base)',type:'number',default:0.001,step:0.001},
+  ],
+  breakout: [
+    {key:'lookback', label:'Lookback Candles', type:'number',default:20, step:1},
+    {key:'timeframe',label:'Timeframe',        type:'text',  default:'1h'},
+    {key:'quantity', label:'Order Qty (base)', type:'number',default:0.001,step:0.001},
+  ],
+};
+
+const EXCHANGES = [
+  {v:'coinswitchx',l:'coinswitchx (INR)'},
+  {v:'wazirx',     l:'wazirx (INR)'},
+  {v:'c2c1',       l:'c2c1 (USDT)'},
+  {v:'c2c2',       l:'c2c2 (USDT)'},
+];
+
+function mkTitle(n){return n.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());}
+
+async function loadSettings(){
+  try{
+    const j=await(await fetch('/api/settings/')).json();
+    for(const[k,v] of Object.entries(j.data||{})){
+      const el=document.getElementById('set_'+k);
+      if(el)el.value=v;
+    }
+  }catch(e){}
+}
+
+async function loadStrategies(){
+  try{
+    const j=await(await fetch('/api/strategies/')).json();
+    const list=j.data||j.configs||[];
+    if(!list.length){
+      document.getElementById('strategiesConfig').innerHTML='<p style="color:var(--muted);font-size:13px;padding:12px">No strategies found. Server may still be initialising.</p>';
+      return;
+    }
+    document.getElementById('strategiesConfig').innerHTML=list.map(s=>{
+      const ps=STRAT_PARAMS[s.name]||[];
+      const exchVal=s.parameters?.exchange||'coinswitchx';
+      const exchOpts=EXCHANGES.map(o=>`<option value="${o.v}"${o.v===exchVal?' selected':''}>${o.l}</option>`).join('');
+      const paramHtml=ps.map(p=>{
+        const v=(s.parameters&&s.parameters[p.key]!==undefined)?s.parameters[p.key]:p.default;
+        return`<div class="fg"><label>${p.label}</label><input type="${p.type}" id="p_${s.name}_${p.key}" value="${v}"${p.step?' step="'+p.step+'"':''}></div>`;
+      }).join('');
+      return`<div class="strat-card">
+        <div class="strat-head" onclick="toggleCard('${s.name}')">
+          <div>
+            <div style="font-weight:600;font-size:14px;">${mkTitle(s.name)}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:2px;">${s.symbol} · ${exchVal}${s.last_run?' · '+new Date(s.last_run).toLocaleTimeString():''}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <span style="font-size:11px;color:${s.is_enabled?'var(--green)':'var(--muted)'}">${s.is_enabled?'● Active':'○ Inactive'}</span>
+            <label class="toggle" onclick="event.stopPropagation()">
+              <input type="checkbox" id="tog_${s.name}"${s.is_enabled?' checked':''}>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="strat-body" id="body_${s.name}">
+          <div class="grid2" style="margin-bottom:14px;">
+            <div class="fg"><label>Symbol</label><input type="text" id="sym_${s.name}" value="${s.symbol}" placeholder="BTC/INR or BTC/USDT"></div>
+            <div class="fg"><label>Exchange</label><select id="exch_${s.name}">${exchOpts}</select></div>
+          </div>
+          ${ps.length?`<div class="grid3" style="margin-bottom:14px;">${paramHtml}</div>`:''}
+          <div style="display:flex;gap:10px;">
+            <button class="btn btn-blue" onclick="saveStrategy('${s.name}')">💾 Save</button>
+            <button class="btn btn-ghost" onclick="runStrategy('${s.name}')">▶ Run Once</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }catch(e){
+    document.getElementById('strategiesConfig').innerHTML='<p style="color:var(--red);font-size:13px;padding:12px">Failed to load — is the server running?</p>';
+  }
+}
+
+function toggleCard(n){document.getElementById('body_'+n).classList.toggle('open');}
+
+async function saveCredentials(){
+  const key=document.getElementById('apiKey').value.trim();
+  const sec=document.getElementById('apiSecret').value.trim();
+  if(!key||!sec){showResult('credResult',false,'Both fields are required.');return;}
+  if(sec.length!==64){showResult('credResult',false,`Secret must be 64 hex chars (yours: ${sec.length})`);return;}
+  const r=await fetch('/api/settings/credentials',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({api_key:key,api_secret:sec})});
+  const j=await r.json();
+  showResult('credResult',j.success,j.message||j.detail||'Saved');
+}
+
+async function saveTradingSettings(){
+  const keys=['trade_size_usdt','max_open_positions','max_position_size_percent','max_daily_loss_percent','simulation_mode'];
+  for(const k of keys){
+    const el=document.getElementById('set_'+k);
+    if(el&&el.value!=='')await fetch('/api/settings/update',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:k,value:el.value})});
+  }
+  showResult('tradingResult',true,'✓ Settings saved');
+}
+
+async function saveStrategy(n){
+  const enabled=document.getElementById('tog_'+n)?.checked||false;
+  const symbol=(document.getElementById('sym_'+n)?.value||'BTC/INR').trim().toUpperCase();
+  const exchange=document.getElementById('exch_'+n)?.value||'coinswitchx';
+  const quote=symbol.includes('/')?symbol.split('/')[1]:'';
+  if(['coinswitchx','wazirx'].includes(exchange)&&quote!=='INR'){showResult('strategyResult',false,`${exchange} requires INR symbol e.g. BTC/INR`);return;}
+  if(['c2c1','c2c2'].includes(exchange)&&quote!=='USDT'){showResult('strategyResult',false,`${exchange} requires USDT symbol e.g. BTC/USDT`);return;}
+  const params={exchange};
+  document.querySelectorAll(`[id^="p_${n}_"]`).forEach(el=>{
+    const k=el.id.replace(`p_${n}_`,'');
+    params[k]=(el.type==='text'||isNaN(el.value))?el.value:parseFloat(el.value);
+  });
+  await fetch('/api/strategies/toggle',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,enabled})});
+  await fetch('/api/strategies/update',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,symbol,market_type:'SPOT',parameters:params})});
+  showResult('strategyResult',true,`✓ ${mkTitle(n)} saved`);
+  loadStrategies();
+}
+
+async function runStrategy(n){
+  const r=await fetch(`/api/strategies/run/${n}`,{method:'POST'});
+  const j=await r.json();
+  showResult('strategyResult',true,`▶ ${mkTitle(n)} ran — signal: ${j.signal||'none'}`);
+}
+
+async function stopTrading(){await fetch('/api/settings/trading/stop',{method:'POST'});showResult('riskResult',false,'⛔ Trading stopped');}
+async function resumeTrading(){await fetch('/api/settings/trading/resume',{method:'POST'});showResult('riskResult',true,'✓ Trading resumed');}
+
+function showResult(id,ok,msg){
+  const el=document.getElementById(id);
+  el.innerHTML=`<div class="alert ${ok?'alert-ok':'alert-err'}">${msg}</div>`;
+  setTimeout(()=>el.innerHTML='',5000);
+}
+
+loadSettings();
+loadStrategies();
+</script>
+</body>
+</html>

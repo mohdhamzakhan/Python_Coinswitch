@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ app_name }} – Backtest</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    :root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--green:#3fb950;--red:#f85149;--blue:#58a6ff;--yellow:#d29922;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+    nav{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-size:18px;font-weight:700;color:var(--blue);}
+    nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px;}
+    nav a:hover,nav a.active{color:var(--text);}
+    .container{max-width:1100px;margin:0 auto;padding:24px;}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:20px;}
+    .card-title{font-size:15px;font-weight:700;margin-bottom:16px;}
+    .form-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px;}
+    .form-row-2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px;}
+    .fg label{display:block;font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+    .fg input,.fg select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:8px 12px;color:var(--text);font-size:13px;}
+    .fg input:focus,.fg select:focus{outline:none;border-color:var(--blue);}
+    .btn{padding:10px 24px;border-radius:6px;border:none;cursor:pointer;font-size:14px;font-weight:600;transition:opacity .2s;}
+    .btn:hover{opacity:.85;}
+    .btn-blue{background:var(--blue);color:#000;}
+    .metrics-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px;}
+    .metric{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center;}
+    .metric-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;}
+    .metric-value{font-size:20px;font-weight:700;}
+    .green{color:var(--green);}
+    .red{color:var(--red);}
+    .blue{color:var(--blue);}
+    .chart-wrap{height:260px;position:relative;}
+    table{width:100%;border-collapse:collapse;font-size:13px;}
+    th{text-align:left;padding:8px 12px;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border);}
+    td{padding:8px 12px;border-bottom:1px solid var(--border);}
+    #statusMsg{font-size:13px;margin-top:10px;min-height:20px;}
+    #resultsSection{display:none;}
+    .hint{font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.6;padding:10px 14px;background:rgba(88,166,255,.05);border:1px solid rgba(88,166,255,.15);border-radius:6px;}
+    code{background:rgba(255,255,255,.06);padding:1px 5px;border-radius:3px;font-family:monospace;font-size:12px;}
+    .divider{border:none;border-top:1px solid var(--border);margin:16px 0;}
+  </style>
+</head>
+<body>
+<nav>
+  <span class="logo">⚡ {{ app_name }}</span>
+  <div>
+    <a href="/">Dashboard</a>
+    <a href="/settings-page">Settings</a>
+    <a href="/backtest-page" class="active">Backtest</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="card">
+    <div class="card-title">📊 Strategy Backtester</div>
+
+    <div class="hint">
+      ⚠️ Backtest requires valid API credentials (saved in Settings) to fetch historical candle data from CoinSwitch.<br>
+      Use <strong>BTC/INR</strong> with exchange <code>coinswitchx</code> or <code>wazirx</code> · Use <strong>BTC/USDT</strong> with exchange <code>c2c1</code> or <code>c2c2</code>
+    </div>
+
+    <div class="form-row">
+      <div class="fg">
+        <label>Strategy</label>
+        <select id="btStrategy" onchange="updateParams()">
+          <option value="ma_crossover">MA Crossover</option>
+          <option value="rsi_strategy">RSI Strategy</option>
+          <option value="breakout">Breakout</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Symbol</label>
+        <input id="btSymbol" value="BTC/INR" placeholder="BTC/INR or BTC/USDT">
+      </div>
+      <div class="fg">
+        <label>Timeframe</label>
+        <select id="btTimeframe">
+          <option value="5">5m</option>
+          <option value="15">15m</option>
+          <option value="60" selected>1h</option>
+          <option value="240">4h</option>
+          <option value="1440">1d</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Candles (data points)</label>
+        <input type="number" id="btLimit" value="300" min="50" max="1000">
+      </div>
+    </div>
+
+    <div class="form-row-2">
+      <div class="fg">
+        <label>Initial Capital</label>
+        <input type="number" id="btCapital" value="100000" min="100">
+      </div>
+      <div class="fg">
+        <label>Exchange</label>
+        <select id="btExchange" onchange="syncSymbol()">
+          <option value="coinswitchx">coinswitchx (INR)</option>
+          <option value="wazirx">wazirx (INR)</option>
+          <option value="c2c1">c2c1 (USDT)</option>
+          <option value="c2c2">c2c2 (USDT)</option>
+        </select>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Dynamic strategy parameters -->
+    <div id="paramSection"></div>
+
+    <button class="btn btn-blue" onclick="runBacktest()" style="margin-top:4px;">▶ Run Backtest</button>
+    <div id="statusMsg"></div>
+  </div>
+
+  <!-- Results -->
+  <div id="resultsSection">
+    <div class="metrics-grid" id="metricsGrid"></div>
+
+    <div class="card">
+      <div class="card-title">Equity Curve</div>
+      <div class="chart-wrap"><canvas id="equityChart"></canvas></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Trade Log</div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>#</th><th>Type</th><th>Price</th><th>Qty</th><th>P&amp;L</th><th>Capital After</th></tr></thead>
+          <tbody id="tradesBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let eqChart = null;
+
+const PARAMS = {
+  ma_crossover:[
+    {key:'fast_period',label:'Fast MA',  default:9},
+    {key:'slow_period',label:'Slow MA',  default:21},
+  ],
+  rsi_strategy:[
+    {key:'rsi_period', label:'RSI Period',     default:14},
+    {key:'oversold',   label:'Oversold Level', default:30},
+    {key:'overbought', label:'Overbought',     default:70},
+  ],
+  breakout:[
+    {key:'lookback',label:'Lookback',default:20},
+  ],
+};
+
+function updateParams(){
+  const ps=PARAMS[document.getElementById('btStrategy').value]||[];
+  const el=document.getElementById('paramSection');
+  if(!ps.length){el.innerHTML='';return;}
+  el.innerHTML='<div style="font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:600;">Strategy Parameters</div>'
+    +'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;">'
+    +ps.map(p=>`<div class="fg"><label>${p.label}</label><input type="number" id="p_${p.key}" value="${p.default}"></div>`).join('')
+    +'</div>';
+}
+
+function syncSymbol(){
+  const exch=document.getElementById('btExchange').value;
+  const sym=document.getElementById('btSymbol').value.trim().toUpperCase();
+  const base=sym.includes('/')?sym.split('/')[0]:'BTC';
+  const needsINR=['coinswitchx','wazirx'].includes(exch);
+  document.getElementById('btSymbol').value=base+'/'+(needsINR?'INR':'USDT');
+}
+
+updateParams();
+
+async function runBacktest(){
+  const strategy=document.getElementById('btStrategy').value;
+  const symbol=document.getElementById('btSymbol').value.trim().toUpperCase();
+  const timeframeMin=parseInt(document.getElementById('btTimeframe').value);
+  const limit=parseInt(document.getElementById('btLimit').value);
+  const capital=parseFloat(document.getElementById('btCapital').value);
+  const exchange=document.getElementById('btExchange').value;
+  const status=document.getElementById('statusMsg');
+
+  // Client-side validation
+  const quote=symbol.includes('/')?symbol.split('/')[1]:'';
+  const needsINR=['coinswitchx','wazirx'].includes(exchange);
+  if(needsINR&&quote!=='INR'){status.innerHTML='<span style="color:var(--red)">✗ Exchange '+exchange+' requires INR symbol (e.g. BTC/INR)</span>';return;}
+  if(!needsINR&&quote!=='USDT'){status.innerHTML='<span style="color:var(--red)">✗ Exchange '+exchange+' requires USDT symbol (e.g. BTC/USDT)</span>';return;}
+
+  // Convert timeframe minutes back to string label for the API
+  const tfMap={1:'1m',3:'3m',5:'5m',15:'15m',30:'30m',60:'1h',120:'2h',240:'4h',360:'6h',720:'12h',1440:'1d'};
+  const timeframe=tfMap[timeframeMin]||'1h';
+
+  const params={};
+  (PARAMS[strategy]||[]).forEach(p=>{
+    const el=document.getElementById('p_'+p.key);
+    if(el)params[p.key]=parseFloat(el.value);
+  });
+
+  status.innerHTML='<span style="color:var(--muted)">⏳ Fetching '+limit+' candles for '+symbol+' from '+exchange+'…</span>';
+  document.getElementById('resultsSection').style.display='none';
+
+  try{
+    const r=await fetch('/api/backtest/run',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({strategy,symbol,timeframe,limit,initial_capital:capital,parameters:params,exchange}),
+    });
+    const j=await r.json();
+    if(!j.success){
+      status.innerHTML='<span style="color:var(--red)">✗ '+( j.detail||'Unknown error')+'</span>';
+      return;
+    }
+    status.innerHTML='<span style="color:var(--green)">✓ Backtest complete — '+j.data.total_trades+' trades found</span>';
+    renderResults(j.data,j.trades);
+    document.getElementById('resultsSection').style.display='block';
+  }catch(e){
+    status.innerHTML='<span style="color:var(--red)">✗ Request failed: '+e.message+'</span>';
+  }
+}
+
+function renderResults(d,trades){
+  const pos=d.total_pnl>=0;
+  document.getElementById('metricsGrid').innerHTML=[
+    {l:'Final Capital',   v:(d.final_capital||0).toLocaleString('en-IN',{maximumFractionDigits:0}),c:'blue'},
+    {l:'Total P&L',       v:(pos?'+':'')+Number(d.total_pnl||0).toFixed(2)+' ('+( pos?'+':'')+Number(d.total_pnl_pct||0).toFixed(2)+'%)',c:pos?'green':'red'},
+    {l:'Win Rate',        v:Number(d.win_rate||0).toFixed(1)+'%', c:(d.win_rate||0)>=50?'green':'red'},
+    {l:'Profit Factor',   v:d.profit_factor===Infinity?'∞':Number(d.profit_factor||0).toFixed(3), c:(d.profit_factor||0)>=1?'green':'red'},
+    {l:'Total Trades',    v:d.total_trades||0, c:''},
+    {l:'Winners',         v:d.winning_trades||0, c:'green'},
+    {l:'Losers',          v:d.losing_trades||0, c:'red'},
+    {l:'Max Drawdown',    v:'-'+Number(d.max_drawdown_pct||0).toFixed(2)+'%', c:'red'},
+    {l:'Sharpe Ratio',    v:Number(d.sharpe_ratio||0).toFixed(3), c:(d.sharpe_ratio||0)>=1?'green':''},
+    {l:'Period',          v:d.period||'—', c:''},
+  ].map(m=>`<div class="metric"><div class="metric-label">${m.l}</div><div class="metric-value ${m.c}">${m.v}</div></div>`).join('');
+
+  // Equity curve
+  let running=d.initial_capital;
+  const eqPts=[running];
+  (trades||[]).forEach(t=>{if(t.pnl!=null){running+=t.pnl;eqPts.push(running);}});
+  if(eqChart)eqChart.destroy();
+  const profit=eqPts[eqPts.length-1]>=eqPts[0];
+  eqChart=new Chart(document.getElementById('equityChart').getContext('2d'),{
+    type:'line',
+    data:{labels:eqPts.map((_,i)=>i),datasets:[{
+      label:'Equity',data:eqPts,
+      borderColor:profit?'#3fb950':'#f85149',
+      backgroundColor:'rgba(88,166,255,.04)',
+      borderWidth:2,fill:true,tension:.3,pointRadius:0,
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{display:false},y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#8b949e',callback:v=>'₹'+v.toFixed(0)}}}
+    }
+  });
+
+  document.getElementById('tradesBody').innerHTML=(trades||[]).map((t,i)=>{
+    const pnl=t.pnl;
+    return`<tr>
+      <td>${i+1}</td>
+      <td style="color:${t.type==='BUY'?'var(--blue)':(pnl>=0?'var(--green)':'var(--red)')}">${t.type}</td>
+      <td>${Number(t.price||0).toLocaleString()}</td>
+      <td>${Number(t.qty||0).toFixed(6)}</td>
+      <td class="${pnl!=null?(pnl>=0?'green':'red'):''}">${pnl!=null?((pnl>=0?'+':'')+pnl.toFixed(2)):'—'}</td>
+      <td>${Number(t.capital||0).toFixed(2)}</td>
+    </tr>`;
+  }).join('');
+}
+</script>
+</body>
+</html>

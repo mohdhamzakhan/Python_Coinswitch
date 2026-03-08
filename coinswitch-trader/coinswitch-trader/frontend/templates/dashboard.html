@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ app_name }} – Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    :root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--green:#3fb950;--red:#f85149;--blue:#58a6ff;--yellow:#d29922;--purple:#bc8cff;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+    nav{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-size:18px;font-weight:700;color:var(--blue);}
+    .sim-badge{background:var(--yellow);color:#000;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;}
+    nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px;}
+    nav a:hover,nav a.active{color:var(--text);}
+    .container{max-width:1400px;margin:0 auto;padding:24px;}
+    .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;}
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+    .g2r{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:20px;}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;}
+    .card-title{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+    .card-value{font-size:26px;font-weight:700;}
+    .card-sub{font-size:12px;color:var(--muted);margin-top:4px;}
+    .sec-title{font-size:15px;font-weight:600;margin-bottom:16px;}
+    .green{color:var(--green);}
+    .red{color:var(--red);}
+    .blue{color:var(--blue);}
+    table{width:100%;border-collapse:collapse;font-size:13px;}
+    th{text-align:left;padding:9px 12px;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border);}
+    td{padding:9px 12px;border-bottom:1px solid var(--border);}
+    tr:last-child td{border-bottom:none;}
+    .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;}
+    .badge-green{background:rgba(63,185,80,.15);color:var(--green);}
+    .badge-red{background:rgba(248,81,73,.15);color:var(--red);}
+    .badge-blue{background:rgba(88,166,255,.15);color:var(--blue);}
+    .badge-yellow{background:rgba(210,153,34,.15);color:var(--yellow);}
+    .btn{padding:8px 16px;border-radius:6px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:opacity .2s;}
+    .btn:hover{opacity:.85;}
+    .btn-green{background:var(--green);color:#000;}
+    .btn-red{background:var(--red);color:#fff;}
+    .btn-blue{background:var(--blue);color:#000;}
+    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text);}
+    .fg label{display:block;font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+    .fg input,.fg select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:8px 12px;color:var(--text);font-size:13px;}
+    .fg input:focus,.fg select:focus{outline:none;border-color:var(--blue);}
+    .chart-wrap{position:relative;height:280px;}
+    .strat-item{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);}
+    .strat-item:last-child{border-bottom:none;}
+    .toggle{position:relative;display:inline-block;width:42px;height:22px;}
+    .toggle input{opacity:0;width:0;height:0;}
+    .slider{position:absolute;cursor:pointer;inset:0;background:var(--border);border-radius:22px;transition:.3s;}
+    .slider:before{content:'';position:absolute;height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;}
+    input:checked+.slider{background:var(--green);}
+    input:checked+.slider:before{transform:translateX(20px);}
+    .log-line{padding:5px 10px;border-radius:4px;margin-bottom:3px;font-size:11px;font-family:monospace;line-height:1.4;}
+    .log-info{background:rgba(88,166,255,.07);}
+    .log-error{background:rgba(248,81,73,.07);color:var(--red);}
+    .log-warning{background:rgba(210,153,34,.07);color:var(--yellow);}
+    .kill-bar{display:flex;align-items:center;gap:14px;padding:14px 20px;background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.3);border-radius:8px;margin-bottom:20px;}
+    .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;}
+    .dot-live{background:var(--green);animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    @media(max-width:900px){.g4,.g2,.g2r{grid-template-columns:1fr 1fr;}.g2r{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<nav>
+  <span class="logo">⚡ {{ app_name }}</span>
+  <div>
+    <a href="/" class="active">Dashboard</a>
+    <a href="/settings-page">Settings</a>
+    <a href="/backtest-page">Backtest</a>
+    <a href="/api/docs">API Docs</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:14px;">
+    {% if simulation %}<span class="sim-badge">SIMULATION</span>{% endif %}
+    <span style="font-size:12px;color:var(--muted);"><span class="dot dot-live"></span>Live</span>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Kill switch -->
+  <div class="kill-bar" id="killBar" style="display:none;">
+    <span style="color:var(--red);font-weight:700;">⚠ TRADING STOPPED</span>
+    <button class="btn btn-green" onclick="resumeTrading()">Resume Trading</button>
+  </div>
+
+  <!-- Stat cards -->
+  <div class="g4">
+    <div class="card">
+      <div class="card-title">Portfolio Value</div>
+      <div class="card-value blue" id="portValue">—</div>
+      <div class="card-sub">Total holdings</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Daily P&amp;L</div>
+      <div class="card-value" id="dailyPnl">—</div>
+      <div class="card-sub" id="dailySub">0 trades today</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Open Orders</div>
+      <div class="card-value blue" id="openOrders">0</div>
+      <div class="card-sub">On exchange</div>
+    </div>
+    <div class="card">
+      <div class="card-title">BTC Price</div>
+      <div class="card-value" id="btcPrice">—</div>
+      <div class="card-sub" id="btcChange">—</div>
+    </div>
+  </div>
+
+  <!-- Chart + Order form -->
+  <div class="g2r">
+    <div class="card">
+      <div class="sec-title">BTC/INR Price Chart</div>
+      <div class="chart-wrap"><canvas id="priceChart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="sec-title">Quick Order (Spot)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="fg" style="grid-column:1/-1;">
+          <label>Exchange</label>
+          <select id="oExchange" onchange="syncOrderSymbol()">
+            <option value="coinswitchx">coinswitchx (INR)</option>
+            <option value="wazirx">wazirx (INR)</option>
+            <option value="c2c1">c2c1 (USDT)</option>
+            <option value="c2c2">c2c2 (USDT)</option>
+          </select>
+        </div>
+        <div class="fg" style="grid-column:1/-1;">
+          <label>Coin</label>
+          <input id="oCoin" value="BTC" placeholder="BTC, ETH, SHIB…" oninput="syncOrderSymbol()">
+        </div>
+        <div class="fg">
+          <label>Quantity</label>
+          <input id="oQty" type="number" step="0.0001" value="0.001">
+        </div>
+        <div class="fg">
+          <label>Price</label>
+          <input id="oPrice" type="number" step="1" placeholder="Limit price">
+        </div>
+      </div>
+      <div id="oSymbolPreview" style="font-size:12px;color:var(--muted);margin:8px 0 14px;"></div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-green" style="flex:1" onclick="placeOrder('buy')">▲ Buy</button>
+        <button class="btn btn-red"   style="flex:1" onclick="placeOrder('sell')">▼ Sell</button>
+      </div>
+      <div id="orderResult" style="margin-top:10px;font-size:12px;min-height:18px;"></div>
+    </div>
+  </div>
+
+  <!-- Recent orders + Portfolio -->
+  <div class="g2">
+    <div class="card">
+      <div class="sec-title">Recent Orders</div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead><tr><th>Symbol</th><th>Side</th><th>Type</th><th>Qty</th><th>Price</th><th>Status</th></tr></thead>
+          <tbody id="ordersBody"><tr><td colspan="6" style="color:var(--muted);text-align:center;padding:20px">No recent orders</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sec-title">Portfolio Balances</div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead><tr><th>Coin</th><th>Balance</th><th>Value</th><th>P&amp;L</th></tr></thead>
+          <tbody id="portBody"><tr><td colspan="4" style="color:var(--muted);text-align:center;padding:20px">—</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategies + Logs -->
+  <div class="g2">
+    <div class="card">
+      <div class="sec-title">Active Strategies</div>
+      <div id="stratList"><p style="color:var(--muted);font-size:13px">Loading…</p></div>
+    </div>
+    <div class="card">
+      <div class="sec-title">Trade Log</div>
+      <div id="tradeLog" style="max-height:320px;overflow-y:auto;">
+        <p style="color:var(--muted);font-size:13px;padding:8px">No logs yet.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let priceChart=null;
+
+// ── Chart init ────────────────────────────────────────────────────────────────
+function initChart(){
+  priceChart=new Chart(document.getElementById('priceChart').getContext('2d'),{
+    type:'line',
+    data:{labels:[],datasets:[{label:'BTC/INR',data:[],borderColor:'#58a6ff',backgroundColor:'rgba(88,166,255,.04)',borderWidth:2,fill:true,tension:.3,pointRadius:0}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{display:false},y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#8b949e',callback:v=>'₹'+v.toLocaleString()}}}}
+  });
+}
+
+// ── Symbol helper ─────────────────────────────────────────────────────────────
+function getOrderSymbol(){
+  const exch=document.getElementById('oExchange').value;
+  const coin=(document.getElementById('oCoin').value||'BTC').trim().toUpperCase();
+  const quote=['coinswitchx','wazirx'].includes(exch)?'INR':'USDT';
+  return {exchange:exch, symbol:coin+'/'+quote, base_coin:coin};
+}
+function syncOrderSymbol(){
+  const{symbol,exchange}=getOrderSymbol();
+  document.getElementById('oSymbolPreview').textContent='→ '+symbol+' on '+exchange;
+}
+syncOrderSymbol();
+
+// ── Refresh all ───────────────────────────────────────────────────────────────
+async function refreshAll(){
+  await Promise.all([refreshPrice(),refreshOrders(),refreshPortfolio(),refreshStrategies(),refreshLogs(),refreshRisk(),refreshChart()]);
+}
+
+async function refreshPrice(){
+  try{
+    const j=await(await fetch('/api/spot/ticker?symbol=BTC%2FINR&exchanges=coinswitchx')).json();
+    const d=Object.values(j.data||{})[0]||{};
+    const p=parseFloat(d.lastPrice||0);
+    document.getElementById('btcPrice').textContent=p?'₹'+p.toLocaleString('en-IN'):'—';
+    const ch=parseFloat(d.percentageChange||0);
+    const cel=document.getElementById('btcChange');
+    cel.textContent=ch?(ch>0?'+':'')+ch.toFixed(2)+'%':'—';
+    cel.className='card-sub '+(ch>0?'green':ch<0?'red':'');
+  }catch(e){}
+}
+
+async function refreshChart(){
+  try{
+    const now=Date.now();
+    const start=now-60*60*1000*6; // 6h
+    const j=await(await fetch(`/api/spot/candles?exchange=coinswitchx&symbol=BTC%2FINR&interval=60&start_time=${start}&end_time=${now}`)).json();
+    const candles=(j.data||[]);
+    if(candles.length&&priceChart){
+      priceChart.data.labels=candles.map(c=>new Date(parseInt(c.start_time||c.close_time||0)).toLocaleTimeString());
+      priceChart.data.datasets[0].data=candles.map(c=>parseFloat(c.c||c.close||0));
+      priceChart.update('none');
+    }
+  }catch(e){}
+}
+
+async function refreshOrders(){
+  try{
+    const j=await(await fetch('/api/spot/history?limit=8')).json();
+    const orders=j.data||[];
+    const tb=document.getElementById('ordersBody');
+    if(!orders.length){tb.innerHTML='<tr><td colspan="6" style="color:var(--muted);text-align:center;padding:20px">No recent orders</td></tr>';return;}
+    const SC={FILLED:'badge-green',EXECUTED:'badge-green',CANCELLED:'badge-red',OPEN:'badge-blue',SIMULATED:'badge-yellow',PARTIALLY_FILLED:'badge-yellow'};
+    tb.innerHTML=orders.map(o=>`<tr>
+      <td>${o.symbol}</td>
+      <td class="${o.side==='BUY'?'green':'red'}">${o.side}</td>
+      <td>${o.order_type}</td>
+      <td>${o.quantity}</td>
+      <td>${o.price?'₹'+o.price:'—'}</td>
+      <td><span class="badge ${SC[o.status]||'badge-blue'}">${o.status}</span></td>
+    </tr>`).join('');
+  }catch(e){}
+}
+
+async function refreshPortfolio(){
+  try{
+    const j=await(await fetch('/api/spot/portfolio')).json();
+    const items=(j.data||[]).filter(p=>parseFloat(p.main_balance||0)>0);
+    const tb=document.getElementById('portBody');
+    if(!items.length){tb.innerHTML='<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:20px">No balances</td></tr>';return;}
+    // Compute total for portfolio card
+    const total=items.reduce((s,p)=>s+parseFloat(p.current_value||0),0);
+    document.getElementById('portValue').textContent=total?'₹'+total.toLocaleString('en-IN',{maximumFractionDigits:0}):'—';
+    tb.innerHTML=items.slice(0,8).map(p=>{
+      const pnl=parseFloat(p.current_value||0)-parseFloat(p.invested_value||0);
+      return`<tr>
+        <td><strong>${p.currency}</strong> <span style="color:var(--muted);font-size:11px">${p.name||''}</span></td>
+        <td>${parseFloat(p.main_balance||0).toFixed(6)}</td>
+        <td>₹${parseFloat(p.current_value||0).toLocaleString('en-IN',{maximumFractionDigits:2})}</td>
+        <td class="${pnl>=0?'green':'red'}">${pnl>=0?'+':''}₹${pnl.toFixed(2)}</td>
+      </tr>`;
+    }).join('');
+  }catch(e){}
+}
+
+async function refreshStrategies(){
+  try{
+    const j=await(await fetch('/api/strategies/')).json();
+    const list=j.data||j.configs||[];
+    const el=document.getElementById('stratList');
+    if(!list.length){el.innerHTML='<p style="color:var(--muted);font-size:13px">No strategies. <a href="/settings-page" style="color:var(--blue)">Configure in Settings →</a></p>';return;}
+    el.innerHTML=list.map(s=>`
+      <div class="strat-item">
+        <div>
+          <div style="font-weight:600;font-size:13px;">${s.name.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</div>
+          <div style="font-size:11px;color:var(--muted);">${s.symbol}${s.last_run?' · '+new Date(s.last_run).toLocaleTimeString():''}</div>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" ${s.is_enabled?'checked':''} onchange="toggleStrat('${s.name}',this.checked)">
+          <span class="slider"></span>
+        </label>
+      </div>`).join('');
+  }catch(e){}
+}
+
+async function refreshLogs(){
+  try{
+    const j=await(await fetch('/api/strategies/logs?limit=25')).json();
+    const logs=j.data||[];
+    const el=document.getElementById('tradeLog');
+    if(!logs.length){el.innerHTML='<p style="color:var(--muted);font-size:13px;padding:8px">No logs yet.</p>';return;}
+    el.innerHTML=logs.map(l=>{
+      const cls={ERROR:'log-error',WARNING:'log-warning',INFO:'log-info'}[l.level]||'log-info';
+      const t=l.created_at?new Date(l.created_at).toLocaleTimeString():'';
+      return`<div class="log-line ${cls}">[${t}] ${l.source?'['+l.source+'] ':''}${l.message}</div>`;
+    }).join('');
+  }catch(e){}
+}
+
+async function refreshRisk(){
+  try{
+    const j=await(await fetch('/api/settings/risk')).json();
+    const d=j.data||{};
+    const pnl=parseFloat(d.realized_pnl||0);
+    document.getElementById('dailyPnl').textContent=(pnl>=0?'+':'')+pnl.toFixed(2);
+    document.getElementById('dailyPnl').className='card-value '+(pnl>=0?'green':'red');
+    document.getElementById('dailySub').textContent=`${d.trade_count||0} trades · ${(d.win_rate||0).toFixed(1)}% win`;
+    document.getElementById('openOrders').textContent=d.open_orders||0;
+  }catch(e){}
+}
+
+// ── Place order ───────────────────────────────────────────────────────────────
+async function placeOrder(side){
+  const{exchange,symbol,base_coin}=getOrderSymbol();
+  const qty=parseFloat(document.getElementById('oQty').value);
+  const price=parseFloat(document.getElementById('oPrice').value)||null;
+  if(!qty||qty<=0){showOrderResult(false,'Quantity must be > 0');return;}
+  if(!price||price<=0){showOrderResult(false,'Enter a limit price');return;}
+  try{
+    const r=await fetch('/api/spot/order',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({exchange,base_coin,side,price,quantity:qty}),
+    });
+    const j=await r.json();
+    showOrderResult(j.success,j.success?`✓ ${side.toUpperCase()} ${qty} ${symbol} @ ₹${price}`:(j.detail||'Order failed'));
+    if(j.success)refreshOrders();
+  }catch(e){showOrderResult(false,'Request failed: '+e.message);}
+}
+
+function showOrderResult(ok,msg){
+  const el=document.getElementById('orderResult');
+  el.style.color=ok?'var(--green)':'var(--red)';
+  el.textContent=msg;
+  setTimeout(()=>el.textContent='',6000);
+}
+
+async function toggleStrat(name,enabled){
+  await fetch('/api/strategies/toggle',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,enabled})});
+}
+async function resumeTrading(){
+  await fetch('/api/settings/trading/resume',{method:'POST'});
+  document.getElementById('killBar').style.display='none';
+}
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+initChart();
+refreshAll();
+setInterval(refreshAll,8000);
+</script>
+</body>
+</html>
