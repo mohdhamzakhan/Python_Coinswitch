@@ -155,27 +155,156 @@ async def get_price(symbol: str):
 
 
 @market_router.get("/orderbook/{symbol:path}")
-async def get_orderbook(symbol: str, depth: int = 20):
-    data = await market_data.get_orderbook(symbol, depth)
-    return {"data": data}
+async def get_orderbook(
+    symbol: str,
+    exchange: str = Query("coinswitchx", description="coinswitchx | wazirx | c2c1 | c2c2"),
+):
+    """
+    Order book (bids + asks) for a symbol.
+
+    - **symbol**: e.g. `BTC/INR` for coinswitchx/wazirx, `BTC/USDT` for c2c1/c2c2
+    - **exchange**: which exchange to query (default: coinswitchx)
+    """
+    import urllib.parse
+    symbol = urllib.parse.unquote(symbol).upper()
+    try:
+        data = await market_data.get_orderbook(symbol, exchange.lower())
+        return {"data": data}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"CoinSwitch API error: {e}")
 
 
 @market_router.get("/candles/{symbol:path}")
-async def get_candles_legacy(symbol: str, timeframe: str = "1h", limit: int = 100):
-    data = await market_data.get_candles(symbol, timeframe, limit)
+async def get_candles_legacy(
+    symbol: str,
+    timeframe: str = Query("1h", description="1m 5m 15m 30m 1h 4h 1d"),
+    limit: int = Query(100, ge=1, le=1000),
+    exchange: str = Query("coinswitchx", description="coinswitchx | wazirx | c2c1 | c2c2"),
+):
+    """
+    OHLCV candle data for a symbol.
+
+    - **symbol**: e.g. `BTC/INR` — must match the exchange's quote currency
+    - **timeframe**: candle interval string (1m 5m 15m 1h 4h 1d)
+    - **limit**: number of candles to return (1–1000)
+    - **exchange**: coinswitchx/wazirx for INR pairs, c2c1/c2c2 for USDT pairs
+
+    Requires valid API credentials saved in Settings.
+    """
+    import urllib.parse
+    symbol = urllib.parse.unquote(symbol).upper()
+    try:
+        data = await market_data.get_candles(
+            symbol=symbol,
+            timeframe=timeframe,
+            limit=limit,
+            exchange=exchange.lower(),
+        )
+        return {"data": data}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"CoinSwitch API error: {e}")
+
+
+@market_router.get("/trades/{symbol:path}")
+async def get_recent_trades(
+    symbol: str,
+    exchange: str = Query("coinswitchx", description="coinswitchx | wazirx | c2c1 | c2c2"),
+):
+    """
+    Recent trade executions for a symbol.
+
+    - **symbol**: e.g. `BTC/INR`
+    - **exchange**: which exchange to query
+
+    Requires valid API credentials. CoinSwitch is a spot exchange —
+    there are no funding rates (that is a futures concept).
+    """
+    import urllib.parse
+    symbol = urllib.parse.unquote(symbol).upper()
+    try:
+        data = await market_data.get_trades(symbol, exchange.lower())
+        return {"data": data}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"CoinSwitch API error: {e}")
+
+
+@market_router.get("/fees")
+async def get_trading_fees(
+    exchange: str = Query("coinswitchx", description="coinswitchx | wazirx | c2c1 | c2c2"),
+):
+    """
+    Maker / taker fee schedule for an exchange.
+    Requires valid API credentials.
+    """
+    data = await market_data.get_trading_fee(exchange.lower())
     return {"data": data}
 
 
-@market_router.get("/funding-rate/{symbol:path}")
-async def get_funding_rate(symbol: str):
-    data = await market_data.get_funding_rate(symbol)
-    return {"data": data}
+@market_router.get("/status")
+async def api_status():
+    """
+    Diagnostic endpoint. Shows whether API credentials are loaded and valid.
+    Call this first if market data endpoints return errors.
+    """
+    from app.api.client import get_api_client, CoinSwitchAuthError, CoinSwitchAPIError
+    client = await get_api_client()
+    has_key    = bool(client.api_key)
+    has_secret = bool(client.secret_key_hex)
+    secret_len = len(client.secret_key_hex)
+
+    result = {
+        "credentials_loaded": has_key and has_secret,
+        "api_key_present":    has_key,
+        "api_key_preview":    (client.api_key[:8] + "…") if has_key else None,
+        "secret_present":     has_secret,
+        "secret_length":      secret_len,
+        "secret_length_ok":   secret_len == 64,
+        "hint": None,
+    }
+
+    if not has_key or not has_secret:
+        result["hint"] = "Go to Settings → API Credentials and save your CoinSwitch API key and 64-char hex secret."
+        return result
+
+    if secret_len != 64:
+        result["hint"] = f"Secret is {secret_len} chars, must be exactly 64 hex characters."
+        return result
+
+    # Try a live ping — validate/keys endpoint
+    try:
+        ping = await client.validate_keys()
+        result["api_reachable"] = True
+        result["api_response"]  = ping
+    except CoinSwitchAuthError as e:
+        result["api_reachable"] = False
+        result["error"] = f"Auth error: {e}"
+        result["hint"]  = "Secret key may be wrong. Re-paste it from the CoinSwitch HFT portal."
+    except CoinSwitchAPIError as e:
+        result["api_reachable"] = False
+        result["error"] = f"API error {e.status_code}: {e}"
+        result["hint"]  = "Check your API key. 401 = invalid key. 403 = IP not whitelisted."
+    except Exception as e:
+        result["api_reachable"] = False
+        result["error"] = str(e)
+
+    return result
 
 
 @market_router.get("/exchange-info")
-async def get_exchange_info():
-    data = await market_data.get_exchange_info()
-    return {"data": data}
+async def get_exchange_info(
+    exchange: str = Query("coinswitchx", description="coinswitchx | wazirx | c2c1 | c2c2"),
+):
+    try:
+        data = await market_data.get_exchange_info(exchange.lower())
+        return {"data": data}
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"CoinSwitch API error: {e}")
 
 
 # ── Spot Trading Routes ───────────────────────────────────────────────────────

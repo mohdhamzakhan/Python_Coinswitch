@@ -594,7 +594,7 @@ class SpotTradingService:
             return resp.get("data", [])
         except Exception as e:
             logger.error(f"get_trades({exchange}, {symbol}): {e}")
-            return []
+            raise
 
     # ── 13. Depth (order book) ────────────────────────────────────────────────
 
@@ -625,7 +625,7 @@ class SpotTradingService:
             return resp.get("data", {"bids": [], "asks": []})
         except Exception as e:
             logger.error(f"get_depth({exchange}, {symbol}): {e}")
-            return {"bids": [], "asks": []}
+            raise
 
     # ── 14. Candles ───────────────────────────────────────────────────────────
 
@@ -665,10 +665,13 @@ class SpotTradingService:
                     "end_time":   str(end_time),
                 },
             )
-            return resp.get("result", [])
+            # CoinSwitch returns candle array under "data" key
+            candles = resp.get("data", resp.get("result", []))
+            logger.debug(f"get_candles: got {len(candles)} candles for {symbol}")
+            return candles
         except Exception as e:
             logger.error(f"get_candles({exchange}, {symbol}): {e}")
-            return []
+            raise  # re-raise so routes can return a meaningful HTTP error
 
     # ── 15a. Ticker — all pairs ───────────────────────────────────────────────
 
