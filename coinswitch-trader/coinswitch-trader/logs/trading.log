@@ -4097,3 +4097,954 @@
 2026-03-08 10:33:58.522 | INFO     | main:lifespan:81 - Shutting down...
 2026-03-08 10:33:58.524 | INFO     | app.services.scheduler:stop_scheduler:39 - Scheduler stopped
 2026-03-08 10:33:58.525 | INFO     | app.websocket.listener:stop:176 - WebSocket listener stopped
+2026-03-08 10:34:13.204 | INFO     | main:lifespan:56 - Starting CoinSwitch Trader
+2026-03-08 10:34:13.225 | INFO     | main:lifespan:60 - Database initialized
+2026-03-08 10:34:13.292 | INFO     | app.strategies.engine:seed_default_configs:122 - Seeded default strategy configs
+2026-03-08 10:34:13.293 | INFO     | main:lifespan:69 - WebSocket listener started
+2026-03-08 10:34:13.301 | INFO     | app.services.scheduler:setup_scheduler:26 - Scheduler configured: strategies run every 30s
+2026-03-08 10:34:13.306 | INFO     | app.services.scheduler:start_scheduler:33 - Scheduler started
+2026-03-08 10:34:13.306 | INFO     | main:lifespan:76 - App running. Simulation mode: True
+2026-03-08 10:34:13.307 | INFO     | app.websocket.listener:start:65 - Starting WebSocket listener…
+2026-03-08 10:34:13.354 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 5s…
+2026-03-08 10:34:18.387 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 10s…
+2026-03-08 10:34:28.427 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 20s…
+2026-03-08 10:34:43.322 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:34:43.322 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:34:43.322 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:34:43.322 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:34:43.322 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:34:43.322 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:34:44.337 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.16
+2026-03-08 10:34:44.447 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5679941.40 - 6942150.60]
+2026-03-08 10:34:44.590 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5679941.4 on coinswitchx
+2026-03-08 10:34:44.742 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5806162.32 on coinswitchx
+2026-03-08 10:34:44.884 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5932383.24 on coinswitchx
+2026-03-08 10:34:45.099 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6058604.16 on coinswitchx
+2026-03-08 10:34:45.347 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6184825.08 on coinswitchx
+2026-03-08 10:34:45.476 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6437266.92 on coinswitchx
+2026-03-08 10:34:45.620 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6563487.84 on coinswitchx
+2026-03-08 10:34:45.759 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6689708.76 on coinswitchx
+2026-03-08 10:34:45.879 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6815929.68 on coinswitchx
+2026-03-08 10:34:46.012 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6942150.6 on coinswitchx
+2026-03-08 10:34:46.012 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:34:46.447 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6311046.0000
+2026-03-08 10:34:46.720 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6311046.0 on coinswitchx
+2026-03-08 10:34:48.504 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 40s…
+2026-03-08 10:35:13.309 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:35:13.309 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:35:13.309 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:35:13.309 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:35:13.309 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:35:13.309 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:35:14.380 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=41.35
+2026-03-08 10:35:14.936 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5679941.40 - 6942150.60]
+2026-03-08 10:35:15.126 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5679941.4 on coinswitchx
+2026-03-08 10:35:15.256 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5806162.32 on coinswitchx
+2026-03-08 10:35:15.382 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5932383.24 on coinswitchx
+2026-03-08 10:35:15.501 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6058604.16 on coinswitchx
+2026-03-08 10:35:15.631 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6184825.08 on coinswitchx
+2026-03-08 10:35:15.764 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6437266.92 on coinswitchx
+2026-03-08 10:35:15.892 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6563487.84 on coinswitchx
+2026-03-08 10:35:16.033 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6689708.76 on coinswitchx
+2026-03-08 10:35:16.164 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6815929.68 on coinswitchx
+2026-03-08 10:35:16.304 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6942150.6 on coinswitchx
+2026-03-08 10:35:16.306 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:35:16.501 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 41.5 > threshold 40.0
+2026-03-08 10:35:28.514 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:35:43.324 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:35:43.324 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:35:43.324 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:35:43.324 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:35:43.324 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:35:43.324 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:35:43.845 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=41.35
+2026-03-08 10:35:43.971 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5679941.40 - 6942150.60]
+2026-03-08 10:35:44.185 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5679941.4 on coinswitchx
+2026-03-08 10:35:44.317 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5806162.32 on coinswitchx
+2026-03-08 10:35:44.452 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5932383.24 on coinswitchx
+2026-03-08 10:35:44.594 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6058604.16 on coinswitchx
+2026-03-08 10:35:44.719 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6184825.08 on coinswitchx
+2026-03-08 10:35:44.858 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6437266.92 on coinswitchx
+2026-03-08 10:35:44.984 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6563487.84 on coinswitchx
+2026-03-08 10:35:45.128 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6689708.76 on coinswitchx
+2026-03-08 10:35:45.245 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6815929.68 on coinswitchx
+2026-03-08 10:35:45.383 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6942150.6 on coinswitchx
+2026-03-08 10:35:45.386 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:35:45.562 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 41.5 > threshold 40.0
+2026-03-08 10:42:32.934 | INFO     | main:lifespan:56 - Starting CoinSwitch Trader
+2026-03-08 10:42:32.950 | INFO     | main:lifespan:60 - Database initialized
+2026-03-08 10:42:32.964 | INFO     | app.strategies.engine:seed_default_configs:122 - Seeded default strategy configs
+2026-03-08 10:42:32.964 | INFO     | main:lifespan:69 - WebSocket listener started
+2026-03-08 10:42:32.976 | INFO     | app.services.scheduler:setup_scheduler:26 - Scheduler configured: strategies run every 30s
+2026-03-08 10:42:32.980 | INFO     | app.services.scheduler:start_scheduler:33 - Scheduler started
+2026-03-08 10:42:32.981 | INFO     | main:lifespan:76 - App running. Simulation mode: True
+2026-03-08 10:42:32.981 | INFO     | app.websocket.listener:start:65 - Starting WebSocket listener…
+2026-03-08 10:42:33.092 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 5s…
+2026-03-08 10:42:33.847 | INFO     | main:lifespan:81 - Shutting down...
+2026-03-08 10:42:33.847 | INFO     | app.services.scheduler:stop_scheduler:39 - Scheduler stopped
+2026-03-08 10:42:33.847 | INFO     | app.websocket.listener:stop:176 - WebSocket listener stopped
+2026-03-08 10:42:42.133 | INFO     | main:lifespan:56 - Starting CoinSwitch Trader
+2026-03-08 10:42:42.155 | INFO     | main:lifespan:60 - Database initialized
+2026-03-08 10:42:42.209 | INFO     | app.strategies.engine:seed_default_configs:122 - Seeded default strategy configs
+2026-03-08 10:42:42.209 | INFO     | main:lifespan:69 - WebSocket listener started
+2026-03-08 10:42:42.221 | INFO     | app.services.scheduler:setup_scheduler:26 - Scheduler configured: strategies run every 30s
+2026-03-08 10:42:42.223 | INFO     | app.services.scheduler:start_scheduler:33 - Scheduler started
+2026-03-08 10:42:42.223 | INFO     | main:lifespan:76 - App running. Simulation mode: True
+2026-03-08 10:42:42.223 | INFO     | app.websocket.listener:start:65 - Starting WebSocket listener…
+2026-03-08 10:42:42.244 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 5s…
+2026-03-08 10:42:47.249 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 10s…
+2026-03-08 10:42:57.261 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 20s…
+2026-03-08 10:43:12.235 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:43:12.235 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:43:12.235 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:43:12.235 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:43:12.235 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:43:12.235 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:43:12.317 | INFO     | app.risk.manager:resume_trading:91 - Trading resumed
+2026-03-08 10:43:12.759 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=43.36
+2026-03-08 10:43:12.883 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5694569.10 - 6960028.90]
+2026-03-08 10:43:13.123 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5694569.1 on coinswitchx
+2026-03-08 10:43:13.256 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5821115.08 on coinswitchx
+2026-03-08 10:43:13.379 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5947661.06 on coinswitchx
+2026-03-08 10:43:13.538 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6074207.04 on coinswitchx
+2026-03-08 10:43:13.666 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6200753.02 on coinswitchx
+2026-03-08 10:43:13.786 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6453844.98 on coinswitchx
+2026-03-08 10:43:13.908 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6580390.96 on coinswitchx
+2026-03-08 10:43:14.057 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6706936.94 on coinswitchx
+2026-03-08 10:43:14.198 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6833482.92 on coinswitchx
+2026-03-08 10:43:14.331 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6960028.9 on coinswitchx
+2026-03-08 10:43:14.332 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:43:14.531 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 43.6 > threshold 40.0
+2026-03-08 10:43:17.279 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 40s…
+2026-03-08 10:43:21.562 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:43:42.232 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:43:42.232 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:43:42.232 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:43:42.232 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:43:42.232 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:43:42.232 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:43:42.691 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.10
+2026-03-08 10:43:42.813 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5696503.20 - 6962392.80]
+2026-03-08 10:43:43.036 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5696503.2 on coinswitchx
+2026-03-08 10:43:43.164 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5823092.16 on coinswitchx
+2026-03-08 10:43:43.297 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5949681.12 on coinswitchx
+2026-03-08 10:43:43.430 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6076270.08 on coinswitchx
+2026-03-08 10:43:43.565 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6202859.04 on coinswitchx
+2026-03-08 10:43:43.701 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6456036.96 on coinswitchx
+2026-03-08 10:43:43.832 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6582625.92 on coinswitchx
+2026-03-08 10:43:43.986 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6709214.88 on coinswitchx
+2026-03-08 10:43:44.112 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6835803.84 on coinswitchx
+2026-03-08 10:43:44.263 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6962392.8 on coinswitchx
+2026-03-08 10:43:44.263 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:43:44.980 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6329448.0000
+2026-03-08 10:43:45.213 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6329448.0 on coinswitchx
+2026-03-08 10:43:57.311 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:44:12.230 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:44:12.230 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:44:12.231 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:44:12.231 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:44:12.232 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:44:12.232 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:44:12.820 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.10
+2026-03-08 10:44:13.002 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5696503.20 - 6962392.80]
+2026-03-08 10:44:13.218 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5696503.2 on coinswitchx
+2026-03-08 10:44:13.336 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5823092.16 on coinswitchx
+2026-03-08 10:44:13.468 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5949681.12 on coinswitchx
+2026-03-08 10:44:13.596 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6076270.08 on coinswitchx
+2026-03-08 10:44:13.716 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6202859.04 on coinswitchx
+2026-03-08 10:44:13.856 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6456036.96 on coinswitchx
+2026-03-08 10:44:13.983 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6582625.92 on coinswitchx
+2026-03-08 10:44:14.118 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6709214.88 on coinswitchx
+2026-03-08 10:44:14.269 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6835803.84 on coinswitchx
+2026-03-08 10:44:14.384 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6962392.8 on coinswitchx
+2026-03-08 10:44:14.384 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:44:14.737 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6329448.0000
+2026-03-08 10:44:14.968 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6329448.0 on coinswitchx
+2026-03-08 10:44:33.960 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: Symbol must be in BASE/QUOTE format, got 'STRING'
+2026-03-08 10:44:42.233 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:44:42.234 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:44:42.235 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:44:42.237 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:44:42.238 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:44:42.238 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:44:42.943 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=43.43
+2026-03-08 10:44:43.116 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5696503.20 - 6962392.80]
+2026-03-08 10:44:43.325 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5696503.2 on coinswitchx
+2026-03-08 10:44:43.462 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5823092.16 on coinswitchx
+2026-03-08 10:44:43.593 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5949681.12 on coinswitchx
+2026-03-08 10:44:43.710 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6076270.08 on coinswitchx
+2026-03-08 10:44:43.840 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6202859.04 on coinswitchx
+2026-03-08 10:44:43.976 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6456036.96 on coinswitchx
+2026-03-08 10:44:44.103 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6582625.92 on coinswitchx
+2026-03-08 10:44:44.267 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6709214.88 on coinswitchx
+2026-03-08 10:44:44.395 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6835803.84 on coinswitchx
+2026-03-08 10:44:44.544 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6962392.8 on coinswitchx
+2026-03-08 10:44:44.546 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:44:44.802 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 43.6 > threshold 40.0
+2026-03-08 10:44:57.346 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:45:11.895 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:12.224 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:45:12.224 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:45:12.224 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:45:12.224 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:45:12.224 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:45:12.224 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:45:12.700 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=43.43
+2026-03-08 10:45:12.900 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5652744.30 - 6908909.70]
+2026-03-08 10:45:13.132 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5652744.3 on coinswitchx
+2026-03-08 10:45:13.259 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5778360.84 on coinswitchx
+2026-03-08 10:45:13.381 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5903977.38 on coinswitchx
+2026-03-08 10:45:13.506 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6029593.92 on coinswitchx
+2026-03-08 10:45:13.652 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6155210.46 on coinswitchx
+2026-03-08 10:45:13.796 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6406443.54 on coinswitchx
+2026-03-08 10:45:13.921 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6532060.08 on coinswitchx
+2026-03-08 10:45:14.060 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6657676.62 on coinswitchx
+2026-03-08 10:45:14.203 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6783293.16 on coinswitchx
+2026-03-08 10:45:14.343 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6908909.7 on coinswitchx
+2026-03-08 10:45:14.343 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:45:14.576 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 44.0 > threshold 40.0
+2026-03-08 10:45:17.141 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:21.212 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:21.942 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:22.676 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:23.226 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:23.653 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:23.914 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:24.163 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:24.394 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:24.905 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:25.522 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:26.162 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:45:42.231 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:45:42.231 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:45:42.231 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:45:42.231 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:45:42.231 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:45:42.231 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:45:42.784 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=43.78
+2026-03-08 10:45:42.965 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5652757.80 - 6908926.20]
+2026-03-08 10:45:43.188 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5652757.8 on coinswitchx
+2026-03-08 10:45:43.316 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5778374.64 on coinswitchx
+2026-03-08 10:45:43.447 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5903991.48 on coinswitchx
+2026-03-08 10:45:43.575 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6029608.32 on coinswitchx
+2026-03-08 10:45:43.693 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6155225.16 on coinswitchx
+2026-03-08 10:45:43.826 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6406458.84 on coinswitchx
+2026-03-08 10:45:43.978 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6532075.68 on coinswitchx
+2026-03-08 10:45:44.098 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6657692.52 on coinswitchx
+2026-03-08 10:45:44.228 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6783309.36 on coinswitchx
+2026-03-08 10:45:44.378 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6908926.2 on coinswitchx
+2026-03-08 10:45:44.378 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:45:44.577 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 44.0 > threshold 40.0
+2026-03-08 10:45:57.358 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:46:12.228 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:46:12.228 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:46:12.228 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:46:12.228 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:46:12.228 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:46:12.228 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:46:12.803 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.11
+2026-03-08 10:46:13.459 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5652757.80 - 6908926.20]
+2026-03-08 10:46:13.730 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5652757.8 on coinswitchx
+2026-03-08 10:46:13.917 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5778374.64 on coinswitchx
+2026-03-08 10:46:14.152 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5903991.48 on coinswitchx
+2026-03-08 10:46:14.292 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6029608.32 on coinswitchx
+2026-03-08 10:46:14.411 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6155225.16 on coinswitchx
+2026-03-08 10:46:14.528 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6406458.84 on coinswitchx
+2026-03-08 10:46:14.653 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6532075.68 on coinswitchx
+2026-03-08 10:46:14.778 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6657692.52 on coinswitchx
+2026-03-08 10:46:14.932 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6783309.36 on coinswitchx
+2026-03-08 10:46:15.048 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6908926.2 on coinswitchx
+2026-03-08 10:46:15.048 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:46:15.367 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6280842.0000
+2026-03-08 10:46:15.584 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6280842.0 on coinswitchx
+2026-03-08 10:46:42.227 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:46:42.227 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:46:42.236 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:46:42.238 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:46:42.242 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:46:42.244 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:46:42.738 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.11
+2026-03-08 10:46:42.858 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5652757.80 - 6908926.20]
+2026-03-08 10:46:43.079 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5652757.8 on coinswitchx
+2026-03-08 10:46:43.220 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5778374.64 on coinswitchx
+2026-03-08 10:46:43.358 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5903991.48 on coinswitchx
+2026-03-08 10:46:43.491 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6029608.32 on coinswitchx
+2026-03-08 10:46:43.639 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6155225.16 on coinswitchx
+2026-03-08 10:46:43.772 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6406458.84 on coinswitchx
+2026-03-08 10:46:44.087 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6532075.68 on coinswitchx
+2026-03-08 10:46:44.226 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6657692.52 on coinswitchx
+2026-03-08 10:46:44.355 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6783309.36 on coinswitchx
+2026-03-08 10:46:44.485 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6908926.2 on coinswitchx
+2026-03-08 10:46:44.485 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:46:44.799 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6280842.0000
+2026-03-08 10:46:45.002 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6280842.0 on coinswitchx
+2026-03-08 10:46:57.476 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:47:12.227 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:47:12.227 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:47:12.227 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:47:12.229 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:47:12.229 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:47:12.230 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:47:12.678 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.11
+2026-03-08 10:47:12.821 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5652757.80 - 6908926.20]
+2026-03-08 10:47:12.959 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5652757.8 on coinswitchx
+2026-03-08 10:47:13.077 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5778374.64 on coinswitchx
+2026-03-08 10:47:13.208 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5903991.48 on coinswitchx
+2026-03-08 10:47:13.336 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6029608.32 on coinswitchx
+2026-03-08 10:47:13.465 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6155225.16 on coinswitchx
+2026-03-08 10:47:13.605 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6406458.84 on coinswitchx
+2026-03-08 10:47:13.748 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6532075.68 on coinswitchx
+2026-03-08 10:47:13.887 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6657692.52 on coinswitchx
+2026-03-08 10:47:14.016 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6783309.36 on coinswitchx
+2026-03-08 10:47:14.140 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6908926.2 on coinswitchx
+2026-03-08 10:47:14.140 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:47:14.472 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6280842.0000
+2026-03-08 10:47:14.679 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6280842.0 on coinswitchx
+2026-03-08 10:47:20.725 | INFO     | app.risk.manager:resume_trading:91 - Trading resumed
+2026-03-08 10:47:42.228 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:47:42.229 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:47:42.229 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:47:42.230 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:47:42.230 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:47:42.231 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:47:42.565 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.11
+2026-03-08 10:47:42.696 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5652757.80 - 6908926.20]
+2026-03-08 10:47:43.149 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5652757.8 on coinswitchx
+2026-03-08 10:47:43.280 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5778374.64 on coinswitchx
+2026-03-08 10:47:43.409 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5903991.48 on coinswitchx
+2026-03-08 10:47:43.540 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6029608.32 on coinswitchx
+2026-03-08 10:47:43.698 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6155225.16 on coinswitchx
+2026-03-08 10:47:43.839 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6406458.84 on coinswitchx
+2026-03-08 10:47:43.958 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6532075.68 on coinswitchx
+2026-03-08 10:47:43.974 | INFO     | app.risk.manager:resume_trading:91 - Trading resumed
+2026-03-08 10:47:44.108 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6657692.52 on coinswitchx
+2026-03-08 10:47:44.238 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6783309.36 on coinswitchx
+2026-03-08 10:47:44.357 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6908926.2 on coinswitchx
+2026-03-08 10:47:44.357 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:47:44.692 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6280842.0000
+2026-03-08 10:47:44.892 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6280842.0 on coinswitchx
+2026-03-08 10:47:57.481 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:48:12.233 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:48:12.233 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:48:12.242 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:48:12.242 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:48:12.244 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:48:12.244 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:48:12.652 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.11
+2026-03-08 10:48:12.820 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5696503.20 - 6962392.80]
+2026-03-08 10:48:13.011 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5696503.2 on coinswitchx
+2026-03-08 10:48:13.143 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5823092.16 on coinswitchx
+2026-03-08 10:48:13.283 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5949681.12 on coinswitchx
+2026-03-08 10:48:13.400 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6076270.08 on coinswitchx
+2026-03-08 10:48:13.527 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6202859.04 on coinswitchx
+2026-03-08 10:48:13.649 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6456036.96 on coinswitchx
+2026-03-08 10:48:13.793 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6582625.92 on coinswitchx
+2026-03-08 10:48:13.931 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6709214.88 on coinswitchx
+2026-03-08 10:48:14.061 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6835803.84 on coinswitchx
+2026-03-08 10:48:14.201 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6962392.8 on coinswitchx
+2026-03-08 10:48:14.201 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:48:14.576 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6329448.0000
+2026-03-08 10:48:14.806 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6329448.0 on coinswitchx
+2026-03-08 10:48:42.242 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:48:42.242 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:48:42.244 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:48:42.245 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:48:42.246 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:48:42.246 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:48:42.669 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.11
+2026-03-08 10:48:42.836 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5709832.20 - 6978683.80]
+2026-03-08 10:48:43.368 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5709832.2 on coinswitchx
+2026-03-08 10:48:43.490 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5836717.36 on coinswitchx
+2026-03-08 10:48:43.619 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5963602.52 on coinswitchx
+2026-03-08 10:48:43.751 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6090487.68 on coinswitchx
+2026-03-08 10:48:43.869 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6217372.84 on coinswitchx
+2026-03-08 10:48:44.020 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6471143.16 on coinswitchx
+2026-03-08 10:48:44.151 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6598028.32 on coinswitchx
+2026-03-08 10:48:44.304 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6724913.48 on coinswitchx
+2026-03-08 10:48:44.453 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6851798.64 on coinswitchx
+2026-03-08 10:48:44.584 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6978683.8 on coinswitchx
+2026-03-08 10:48:44.584 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:48:44.983 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6344258.0000
+2026-03-08 10:48:45.200 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6344258.0 on coinswitchx
+2026-03-08 10:48:57.487 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:49:12.225 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:49:12.225 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:49:12.225 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:49:12.225 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:49:12.225 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:49:12.225 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:49:12.879 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.11
+2026-03-08 10:49:13.002 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5709832.20 - 6978683.80]
+2026-03-08 10:49:13.213 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5709832.2 on coinswitchx
+2026-03-08 10:49:13.428 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5836717.36 on coinswitchx
+2026-03-08 10:49:13.563 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5963602.52 on coinswitchx
+2026-03-08 10:49:13.709 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6090487.68 on coinswitchx
+2026-03-08 10:49:13.834 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6217372.84 on coinswitchx
+2026-03-08 10:49:13.964 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6471143.16 on coinswitchx
+2026-03-08 10:49:14.092 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6598028.32 on coinswitchx
+2026-03-08 10:49:14.210 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6724913.48 on coinswitchx
+2026-03-08 10:49:14.331 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6851798.64 on coinswitchx
+2026-03-08 10:49:14.460 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6978683.8 on coinswitchx
+2026-03-08 10:49:14.461 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:49:14.741 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6344258.0000
+2026-03-08 10:49:14.943 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6344258.0 on coinswitchx
+2026-03-08 10:49:42.231 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:49:42.231 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:49:42.231 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:49:42.231 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:49:42.231 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:49:42.231 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:49:42.564 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.11
+2026-03-08 10:49:42.692 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5709832.20 - 6978683.80]
+2026-03-08 10:49:43.397 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5709832.2 on coinswitchx
+2026-03-08 10:49:43.533 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5836717.36 on coinswitchx
+2026-03-08 10:49:43.653 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5963602.52 on coinswitchx
+2026-03-08 10:49:43.779 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6090487.68 on coinswitchx
+2026-03-08 10:49:43.921 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6217372.84 on coinswitchx
+2026-03-08 10:49:44.049 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6471143.16 on coinswitchx
+2026-03-08 10:49:44.179 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6598028.32 on coinswitchx
+2026-03-08 10:49:44.309 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6724913.48 on coinswitchx
+2026-03-08 10:49:44.445 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6851798.64 on coinswitchx
+2026-03-08 10:49:44.593 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6978683.8 on coinswitchx
+2026-03-08 10:49:44.593 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:49:44.895 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6344258.0000
+2026-03-08 10:49:45.084 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6344258.0 on coinswitchx
+2026-03-08 10:49:57.503 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:50:12.233 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:50:12.233 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:50:12.233 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:50:12.233 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:50:12.233 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:50:12.233 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:50:12.623 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.11
+2026-03-08 10:50:12.773 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5709832.20 - 6978683.80]
+2026-03-08 10:50:12.988 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5709832.2 on coinswitchx
+2026-03-08 10:50:13.106 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5836717.36 on coinswitchx
+2026-03-08 10:50:13.235 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5963602.52 on coinswitchx
+2026-03-08 10:50:13.353 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6090487.68 on coinswitchx
+2026-03-08 10:50:13.476 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6217372.84 on coinswitchx
+2026-03-08 10:50:13.600 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6471143.16 on coinswitchx
+2026-03-08 10:50:13.732 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6598028.32 on coinswitchx
+2026-03-08 10:50:13.892 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6724913.48 on coinswitchx
+2026-03-08 10:50:13.999 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6851798.64 on coinswitchx
+2026-03-08 10:50:14.131 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6978683.8 on coinswitchx
+2026-03-08 10:50:14.133 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:50:14.501 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6344258.0000
+2026-03-08 10:50:14.725 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6344258.0 on coinswitchx
+2026-03-08 10:50:42.238 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:50:42.239 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:50:42.239 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:50:42.239 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:50:42.242 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:50:42.321 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:50:44.714 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.11
+2026-03-08 10:50:45.395 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712196.50 - 6981573.50]
+2026-03-08 10:50:45.833 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712196.5 on coinswitchx
+2026-03-08 10:50:45.972 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839134.2 on coinswitchx
+2026-03-08 10:50:46.090 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966071.9 on coinswitchx
+2026-03-08 10:50:46.220 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093009.6 on coinswitchx
+2026-03-08 10:50:46.349 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219947.3 on coinswitchx
+2026-03-08 10:50:46.478 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473822.7 on coinswitchx
+2026-03-08 10:50:46.612 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600760.4 on coinswitchx
+2026-03-08 10:50:46.793 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727698.1 on coinswitchx
+2026-03-08 10:50:46.948 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854635.8 on coinswitchx
+2026-03-08 10:50:47.076 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981573.5 on coinswitchx
+2026-03-08 10:50:47.076 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:50:47.316 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.3 > threshold 40.0
+2026-03-08 10:50:57.558 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:51:12.235 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:51:12.235 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:51:12.235 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:51:12.235 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:51:12.235 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:51:12.235 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:51:12.896 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.11
+2026-03-08 10:51:13.053 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712196.50 - 6981573.50]
+2026-03-08 10:51:13.274 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712196.5 on coinswitchx
+2026-03-08 10:51:13.404 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839134.2 on coinswitchx
+2026-03-08 10:51:13.535 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966071.9 on coinswitchx
+2026-03-08 10:51:13.673 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093009.6 on coinswitchx
+2026-03-08 10:51:13.791 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219947.3 on coinswitchx
+2026-03-08 10:51:13.922 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473822.7 on coinswitchx
+2026-03-08 10:51:14.041 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600760.4 on coinswitchx
+2026-03-08 10:51:14.172 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727698.1 on coinswitchx
+2026-03-08 10:51:14.300 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854635.8 on coinswitchx
+2026-03-08 10:51:14.440 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981573.5 on coinswitchx
+2026-03-08 10:51:14.440 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:51:14.645 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.3 > threshold 40.0
+2026-03-08 10:51:42.232 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:51:42.232 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:51:42.233 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:51:42.234 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:51:42.236 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:51:42.236 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:51:43.112 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.11
+2026-03-08 10:51:43.334 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712195.60 - 6981572.40]
+2026-03-08 10:51:43.857 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712195.6 on coinswitchx
+2026-03-08 10:51:43.987 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839133.28 on coinswitchx
+2026-03-08 10:51:44.138 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966070.96 on coinswitchx
+2026-03-08 10:51:44.262 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093008.64 on coinswitchx
+2026-03-08 10:51:44.387 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219946.32 on coinswitchx
+2026-03-08 10:51:44.559 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473821.68 on coinswitchx
+2026-03-08 10:51:44.778 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600759.36 on coinswitchx
+2026-03-08 10:51:45.010 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727697.04 on coinswitchx
+2026-03-08 10:51:45.137 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854634.72 on coinswitchx
+2026-03-08 10:51:45.247 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981572.4 on coinswitchx
+2026-03-08 10:51:45.247 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:51:45.431 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.3 > threshold 40.0
+2026-03-08 10:51:57.588 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:52:12.236 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:52:12.237 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:52:12.238 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:52:12.239 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:52:12.240 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:52:12.241 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:52:12.921 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.11
+2026-03-08 10:52:13.091 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712195.60 - 6981572.40]
+2026-03-08 10:52:13.309 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712195.6 on coinswitchx
+2026-03-08 10:52:13.435 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839133.28 on coinswitchx
+2026-03-08 10:52:13.569 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966070.96 on coinswitchx
+2026-03-08 10:52:13.710 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093008.64 on coinswitchx
+2026-03-08 10:52:13.840 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219946.32 on coinswitchx
+2026-03-08 10:52:13.969 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473821.68 on coinswitchx
+2026-03-08 10:52:14.099 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600759.36 on coinswitchx
+2026-03-08 10:52:14.227 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727697.04 on coinswitchx
+2026-03-08 10:52:14.358 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854634.72 on coinswitchx
+2026-03-08 10:52:14.499 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981572.4 on coinswitchx
+2026-03-08 10:52:14.500 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:52:14.709 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.3 > threshold 40.0
+2026-03-08 10:52:42.239 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:52:42.241 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:52:42.242 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:52:42.243 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:52:42.244 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:52:42.245 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:52:42.855 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.51
+2026-03-08 10:52:43.019 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712197.40 - 6981574.60]
+2026-03-08 10:52:43.461 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712197.4 on coinswitchx
+2026-03-08 10:52:43.589 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839135.12 on coinswitchx
+2026-03-08 10:52:43.722 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966072.84 on coinswitchx
+2026-03-08 10:52:43.859 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093010.56 on coinswitchx
+2026-03-08 10:52:43.988 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219948.28 on coinswitchx
+2026-03-08 10:52:44.141 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473823.72 on coinswitchx
+2026-03-08 10:52:44.282 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600761.44 on coinswitchx
+2026-03-08 10:52:44.422 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727699.16 on coinswitchx
+2026-03-08 10:52:44.564 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854636.88 on coinswitchx
+2026-03-08 10:52:44.718 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981574.6 on coinswitchx
+2026-03-08 10:52:44.719 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:52:44.930 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.7 > threshold 40.0
+2026-03-08 10:52:57.618 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:53:12.238 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:53:12.238 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:53:12.238 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:53:12.238 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:53:12.238 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:53:12.238 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:53:12.935 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.51
+2026-03-08 10:53:13.118 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712197.40 - 6981574.60]
+2026-03-08 10:53:13.347 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712197.4 on coinswitchx
+2026-03-08 10:53:13.477 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839135.12 on coinswitchx
+2026-03-08 10:53:13.618 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966072.84 on coinswitchx
+2026-03-08 10:53:13.749 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093010.56 on coinswitchx
+2026-03-08 10:53:13.870 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219948.28 on coinswitchx
+2026-03-08 10:53:14.019 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473823.72 on coinswitchx
+2026-03-08 10:53:14.158 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600761.44 on coinswitchx
+2026-03-08 10:53:14.301 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727699.16 on coinswitchx
+2026-03-08 10:53:14.429 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854636.88 on coinswitchx
+2026-03-08 10:53:14.570 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981574.6 on coinswitchx
+2026-03-08 10:53:14.570 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:53:14.797 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.7 > threshold 40.0
+2026-03-08 10:53:42.237 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:53:42.238 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:53:42.238 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:53:42.239 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:53:42.240 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:53:42.240 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:53:42.865 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.51
+2026-03-08 10:53:43.028 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712197.40 - 6981574.60]
+2026-03-08 10:53:43.574 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712197.4 on coinswitchx
+2026-03-08 10:53:43.702 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839135.12 on coinswitchx
+2026-03-08 10:53:43.830 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966072.84 on coinswitchx
+2026-03-08 10:53:43.961 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093010.56 on coinswitchx
+2026-03-08 10:53:44.090 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219948.28 on coinswitchx
+2026-03-08 10:53:44.223 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473823.72 on coinswitchx
+2026-03-08 10:53:44.364 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600761.44 on coinswitchx
+2026-03-08 10:53:44.497 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727699.16 on coinswitchx
+2026-03-08 10:53:44.631 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854636.88 on coinswitchx
+2026-03-08 10:53:44.772 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981574.6 on coinswitchx
+2026-03-08 10:53:44.774 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:53:44.984 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.7 > threshold 40.0
+2026-03-08 10:53:57.628 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:54:12.239 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:54:12.240 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:54:12.241 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:54:12.242 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:54:12.243 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:54:12.245 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:54:12.801 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.51
+2026-03-08 10:54:12.980 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712197.40 - 6981574.60]
+2026-03-08 10:54:13.183 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712197.4 on coinswitchx
+2026-03-08 10:54:13.302 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839135.12 on coinswitchx
+2026-03-08 10:54:13.416 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966072.84 on coinswitchx
+2026-03-08 10:54:13.551 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093010.56 on coinswitchx
+2026-03-08 10:54:13.669 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219948.28 on coinswitchx
+2026-03-08 10:54:13.800 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473823.72 on coinswitchx
+2026-03-08 10:54:13.928 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600761.44 on coinswitchx
+2026-03-08 10:54:14.068 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727699.16 on coinswitchx
+2026-03-08 10:54:14.184 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854636.88 on coinswitchx
+2026-03-08 10:54:14.307 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981574.6 on coinswitchx
+2026-03-08 10:54:14.308 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:54:14.566 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.7 > threshold 40.0
+2026-03-08 10:54:42.230 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:54:42.232 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:54:42.232 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:54:42.233 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:54:42.234 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:54:42.234 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:54:43.320 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.40
+2026-03-08 10:54:43.498 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712197.40 - 6981574.60]
+2026-03-08 10:54:44.022 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712197.4 on coinswitchx
+2026-03-08 10:54:44.152 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839135.12 on coinswitchx
+2026-03-08 10:54:44.261 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966072.84 on coinswitchx
+2026-03-08 10:54:44.411 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093010.56 on coinswitchx
+2026-03-08 10:54:44.540 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219948.28 on coinswitchx
+2026-03-08 10:54:44.659 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473823.72 on coinswitchx
+2026-03-08 10:54:44.784 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600761.44 on coinswitchx
+2026-03-08 10:54:44.918 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727699.16 on coinswitchx
+2026-03-08 10:54:45.049 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854636.88 on coinswitchx
+2026-03-08 10:54:45.182 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981574.6 on coinswitchx
+2026-03-08 10:54:45.183 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:54:45.588 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6346886.0000
+2026-03-08 10:54:45.834 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6346886.0 on coinswitchx
+2026-03-08 10:54:57.642 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:55:12.232 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:55:12.232 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:55:12.232 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:55:12.232 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:55:12.232 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:55:12.232 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:55:12.890 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.40
+2026-03-08 10:55:13.064 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5670000.90 - 6930001.10]
+2026-03-08 10:55:13.251 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5670000.9 on coinswitchx
+2026-03-08 10:55:13.394 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5796000.92 on coinswitchx
+2026-03-08 10:55:13.522 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5922000.94 on coinswitchx
+2026-03-08 10:55:13.654 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6048000.96 on coinswitchx
+2026-03-08 10:55:13.835 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6174000.98 on coinswitchx
+2026-03-08 10:55:13.941 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6426001.02 on coinswitchx
+2026-03-08 10:55:14.097 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6552001.04 on coinswitchx
+2026-03-08 10:55:14.214 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6678001.06 on coinswitchx
+2026-03-08 10:55:14.344 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6804001.08 on coinswitchx
+2026-03-08 10:55:14.449 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6930001.1 on coinswitchx
+2026-03-08 10:55:14.451 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:55:14.838 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6300001.0000
+2026-03-08 10:55:15.068 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6300001.0 on coinswitchx
+2026-03-08 10:55:42.240 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:55:42.240 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:55:42.241 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:55:42.242 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:55:42.242 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:55:42.243 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:55:42.870 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.51
+2026-03-08 10:55:43.036 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5670000.90 - 6930001.10]
+2026-03-08 10:55:43.474 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5670000.9 on coinswitchx
+2026-03-08 10:55:43.612 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5796000.92 on coinswitchx
+2026-03-08 10:55:43.729 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5922000.94 on coinswitchx
+2026-03-08 10:55:43.858 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6048000.96 on coinswitchx
+2026-03-08 10:55:43.977 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6174000.98 on coinswitchx
+2026-03-08 10:55:44.109 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6426001.02 on coinswitchx
+2026-03-08 10:55:44.229 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6552001.04 on coinswitchx
+2026-03-08 10:55:44.358 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6678001.06 on coinswitchx
+2026-03-08 10:55:44.476 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6804001.08 on coinswitchx
+2026-03-08 10:55:44.616 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6930001.1 on coinswitchx
+2026-03-08 10:55:44.617 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:55:44.826 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.7 > threshold 40.0
+2026-03-08 10:55:57.660 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:56:12.246 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:56:12.247 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:56:12.248 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:56:12.249 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:56:12.249 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:56:12.250 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:56:12.934 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.51
+2026-03-08 10:56:13.088 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5670000.90 - 6930001.10]
+2026-03-08 10:56:13.286 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5670000.9 on coinswitchx
+2026-03-08 10:56:13.412 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5796000.92 on coinswitchx
+2026-03-08 10:56:13.548 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5922000.94 on coinswitchx
+2026-03-08 10:56:13.686 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6048000.96 on coinswitchx
+2026-03-08 10:56:13.845 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6174000.98 on coinswitchx
+2026-03-08 10:56:13.975 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6426001.02 on coinswitchx
+2026-03-08 10:56:14.106 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6552001.04 on coinswitchx
+2026-03-08 10:56:14.235 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6678001.06 on coinswitchx
+2026-03-08 10:56:14.381 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6804001.08 on coinswitchx
+2026-03-08 10:56:14.549 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6930001.1 on coinswitchx
+2026-03-08 10:56:14.550 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:56:14.794 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.7 > threshold 40.0
+2026-03-08 10:56:42.232 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:56:42.232 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:56:42.232 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:56:42.232 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:56:42.232 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:56:42.232 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:56:42.679 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=39.24
+2026-03-08 10:56:42.797 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5670000.90 - 6930001.10]
+2026-03-08 10:56:42.999 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5670000.9 on coinswitchx
+2026-03-08 10:56:43.113 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5796000.92 on coinswitchx
+2026-03-08 10:56:43.242 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5922000.94 on coinswitchx
+2026-03-08 10:56:43.370 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6048000.96 on coinswitchx
+2026-03-08 10:56:43.481 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6174000.98 on coinswitchx
+2026-03-08 10:56:43.631 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6426001.02 on coinswitchx
+2026-03-08 10:56:44.103 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6552001.04 on coinswitchx
+2026-03-08 10:56:44.244 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6678001.06 on coinswitchx
+2026-03-08 10:56:44.384 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6804001.08 on coinswitchx
+2026-03-08 10:56:44.516 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6930001.1 on coinswitchx
+2026-03-08 10:56:44.517 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:56:44.908 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6300001.0000
+2026-03-08 10:56:45.133 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6300001.0 on coinswitchx
+2026-03-08 10:56:53.793 | ERROR    | app.api.routes:run_backtest:981 - Backtest error: 'timestamp'
+2026-03-08 10:56:57.671 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:57:02.378 | INFO     | main:lifespan:81 - Shutting down...
+2026-03-08 10:57:02.378 | INFO     | app.services.scheduler:stop_scheduler:39 - Scheduler stopped
+2026-03-08 10:57:02.378 | INFO     | app.websocket.listener:stop:176 - WebSocket listener stopped
+2026-03-08 10:57:12.250 | INFO     | main:lifespan:56 - Starting CoinSwitch Trader
+2026-03-08 10:57:12.273 | INFO     | main:lifespan:60 - Database initialized
+2026-03-08 10:57:12.339 | INFO     | app.strategies.engine:seed_default_configs:122 - Seeded default strategy configs
+2026-03-08 10:57:12.339 | INFO     | main:lifespan:69 - WebSocket listener started
+2026-03-08 10:57:12.339 | INFO     | app.services.scheduler:setup_scheduler:26 - Scheduler configured: strategies run every 30s
+2026-03-08 10:57:12.348 | INFO     | app.services.scheduler:start_scheduler:33 - Scheduler started
+2026-03-08 10:57:12.348 | INFO     | main:lifespan:76 - App running. Simulation mode: True
+2026-03-08 10:57:12.349 | INFO     | app.websocket.listener:start:65 - Starting WebSocket listener…
+2026-03-08 10:57:12.389 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 5s…
+2026-03-08 10:57:17.402 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 10s…
+2026-03-08 10:57:27.421 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 20s…
+2026-03-08 10:57:42.350 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:57:42.350 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:57:42.350 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:57:42.350 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:57:42.350 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:57:42.350 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:57:42.952 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=39.24
+2026-03-08 10:57:43.128 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5670000.00 - 6930000.00]
+2026-03-08 10:57:43.371 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5670000.0 on coinswitchx
+2026-03-08 10:57:43.508 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5796000.0 on coinswitchx
+2026-03-08 10:57:43.667 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5922000.0 on coinswitchx
+2026-03-08 10:57:43.816 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6048000.0 on coinswitchx
+2026-03-08 10:57:43.937 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6174000.0 on coinswitchx
+2026-03-08 10:57:44.081 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6426000.0 on coinswitchx
+2026-03-08 10:57:44.206 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6552000.0 on coinswitchx
+2026-03-08 10:57:44.321 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6678000.0 on coinswitchx
+2026-03-08 10:57:44.488 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6804000.0 on coinswitchx
+2026-03-08 10:57:44.616 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6930000.0 on coinswitchx
+2026-03-08 10:57:44.617 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:57:45.018 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6300000.0000
+2026-03-08 10:57:45.265 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6300000.0 on coinswitchx
+2026-03-08 10:57:47.424 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 40s…
+2026-03-08 10:58:12.371 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:58:12.371 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:58:12.371 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:58:12.375 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:58:12.375 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:58:12.375 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:58:12.995 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=39.24
+2026-03-08 10:58:13.157 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5670000.00 - 6930000.00]
+2026-03-08 10:58:13.356 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5670000.0 on coinswitchx
+2026-03-08 10:58:13.486 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5796000.0 on coinswitchx
+2026-03-08 10:58:13.612 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5922000.0 on coinswitchx
+2026-03-08 10:58:13.758 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6048000.0 on coinswitchx
+2026-03-08 10:58:13.909 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6174000.0 on coinswitchx
+2026-03-08 10:58:14.061 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6426000.0 on coinswitchx
+2026-03-08 10:58:14.189 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6552000.0 on coinswitchx
+2026-03-08 10:58:14.315 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6678000.0 on coinswitchx
+2026-03-08 10:58:14.447 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6804000.0 on coinswitchx
+2026-03-08 10:58:14.566 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6930000.0 on coinswitchx
+2026-03-08 10:58:14.567 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:58:14.925 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6300000.0000
+2026-03-08 10:58:15.166 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6300000.0 on coinswitchx
+2026-03-08 10:58:27.432 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:58:42.348 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:58:42.348 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:58:42.348 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:58:42.348 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:58:42.348 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:58:42.348 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:58:42.791 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=39.24
+2026-03-08 10:58:42.946 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712196.50 - 6981573.50]
+2026-03-08 10:58:43.153 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712196.5 on coinswitchx
+2026-03-08 10:58:43.287 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839134.2 on coinswitchx
+2026-03-08 10:58:43.426 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966071.9 on coinswitchx
+2026-03-08 10:58:43.545 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093009.6 on coinswitchx
+2026-03-08 10:58:43.733 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219947.3 on coinswitchx
+2026-03-08 10:58:43.847 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473822.7 on coinswitchx
+2026-03-08 10:58:43.976 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600760.4 on coinswitchx
+2026-03-08 10:58:44.084 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727698.1 on coinswitchx
+2026-03-08 10:58:44.201 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854635.8 on coinswitchx
+2026-03-08 10:58:44.331 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981573.5 on coinswitchx
+2026-03-08 10:58:44.332 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:58:44.659 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6346885.0000
+2026-03-08 10:58:44.880 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6346885.0 on coinswitchx
+2026-03-08 10:58:50.720 | WARNING  | app.risk.manager:stop_trading:86 - TRADING STOPPED: Manual stop via API
+2026-03-08 10:58:56.984 | INFO     | app.risk.manager:resume_trading:91 - Trading resumed
+2026-03-08 10:59:12.355 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:59:12.355 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:59:12.355 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:59:12.355 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:59:12.355 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:59:12.355 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:59:12.838 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=39.24
+2026-03-08 10:59:13.039 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712196.50 - 6981573.50]
+2026-03-08 10:59:13.516 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712196.5 on coinswitchx
+2026-03-08 10:59:13.639 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839134.2 on coinswitchx
+2026-03-08 10:59:13.783 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966071.9 on coinswitchx
+2026-03-08 10:59:13.916 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093009.6 on coinswitchx
+2026-03-08 10:59:14.035 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219947.3 on coinswitchx
+2026-03-08 10:59:14.165 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473822.7 on coinswitchx
+2026-03-08 10:59:14.294 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600760.4 on coinswitchx
+2026-03-08 10:59:14.434 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727698.1 on coinswitchx
+2026-03-08 10:59:14.565 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854635.8 on coinswitchx
+2026-03-08 10:59:14.692 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981573.5 on coinswitchx
+2026-03-08 10:59:14.708 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:59:15.123 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6346885.0000
+2026-03-08 10:59:15.350 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6346885.0 on coinswitchx
+2026-03-08 10:59:27.430 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 10:59:42.344 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:59:42.344 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:59:42.344 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:59:42.344 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:59:42.344 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 10:59:42.354 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 10:59:42.820 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=39.24
+2026-03-08 10:59:43.004 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5655078.00 - 6911762.00]
+2026-03-08 10:59:43.213 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5655078.0 on coinswitchx
+2026-03-08 10:59:43.343 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5780746.4 on coinswitchx
+2026-03-08 10:59:43.476 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5906414.8 on coinswitchx
+2026-03-08 10:59:43.613 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6032083.2 on coinswitchx
+2026-03-08 10:59:43.754 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6157751.6 on coinswitchx
+2026-03-08 10:59:43.906 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6409088.4 on coinswitchx
+2026-03-08 10:59:44.033 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6534756.8 on coinswitchx
+2026-03-08 10:59:44.154 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6660425.2 on coinswitchx
+2026-03-08 10:59:44.304 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6786093.6 on coinswitchx
+2026-03-08 10:59:44.446 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6911762.0 on coinswitchx
+2026-03-08 10:59:44.446 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 10:59:44.847 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6283420.0000
+2026-03-08 10:59:45.062 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6283420.0 on coinswitchx
+2026-03-08 11:00:12.351 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:00:12.353 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:00:12.353 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:00:12.353 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:00:12.353 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:00:12.358 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 11:00:12.794 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.51
+2026-03-08 11:00:12.975 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5655078.00 - 6911762.00]
+2026-03-08 11:00:13.185 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5655078.0 on coinswitchx
+2026-03-08 11:00:13.292 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5780746.4 on coinswitchx
+2026-03-08 11:00:13.432 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5906414.8 on coinswitchx
+2026-03-08 11:00:13.554 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6032083.2 on coinswitchx
+2026-03-08 11:00:13.698 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6157751.6 on coinswitchx
+2026-03-08 11:00:13.844 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6409088.4 on coinswitchx
+2026-03-08 11:00:13.977 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6534756.8 on coinswitchx
+2026-03-08 11:00:14.093 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6660425.2 on coinswitchx
+2026-03-08 11:00:14.232 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6786093.6 on coinswitchx
+2026-03-08 11:00:14.404 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6911762.0 on coinswitchx
+2026-03-08 11:00:14.405 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 11:00:14.610 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.7 > threshold 40.0
+2026-03-08 11:00:27.446 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 11:00:42.358 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:00:42.358 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:00:42.359 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:00:42.359 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:00:42.361 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:00:42.362 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 11:00:42.936 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.51
+2026-03-08 11:00:43.036 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5655078.00 - 6911762.00]
+2026-03-08 11:00:43.237 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5655078.0 on coinswitchx
+2026-03-08 11:00:43.364 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5780746.4 on coinswitchx
+2026-03-08 11:00:43.498 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5906414.8 on coinswitchx
+2026-03-08 11:00:43.633 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6032083.2 on coinswitchx
+2026-03-08 11:00:43.786 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6157751.6 on coinswitchx
+2026-03-08 11:00:43.907 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6409088.4 on coinswitchx
+2026-03-08 11:00:44.049 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6534756.8 on coinswitchx
+2026-03-08 11:00:44.166 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6660425.2 on coinswitchx
+2026-03-08 11:00:44.305 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6786093.6 on coinswitchx
+2026-03-08 11:00:44.433 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6911762.0 on coinswitchx
+2026-03-08 11:00:44.434 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 11:00:44.634 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.7 > threshold 40.0
+2026-03-08 11:01:10.633 | INFO     | main:lifespan:81 - Shutting down...
+2026-03-08 11:01:10.633 | INFO     | app.services.scheduler:stop_scheduler:39 - Scheduler stopped
+2026-03-08 11:01:10.635 | INFO     | app.websocket.listener:stop:176 - WebSocket listener stopped
+2026-03-08 11:01:16.094 | INFO     | main:lifespan:56 - Starting CoinSwitch Trader
+2026-03-08 11:01:16.095 | INFO     | main:lifespan:60 - Database initialized
+2026-03-08 11:01:16.166 | INFO     | app.strategies.engine:seed_default_configs:122 - Seeded default strategy configs
+2026-03-08 11:01:16.167 | INFO     | main:lifespan:69 - WebSocket listener started
+2026-03-08 11:01:16.172 | INFO     | app.services.scheduler:setup_scheduler:26 - Scheduler configured: strategies run every 30s
+2026-03-08 11:01:16.175 | INFO     | app.services.scheduler:start_scheduler:33 - Scheduler started
+2026-03-08 11:01:16.175 | INFO     | main:lifespan:76 - App running. Simulation mode: True
+2026-03-08 11:01:16.176 | INFO     | app.websocket.listener:start:65 - Starting WebSocket listener…
+2026-03-08 11:01:16.199 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 5s…
+2026-03-08 11:01:21.203 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 10s…
+2026-03-08 11:01:31.237 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 20s…
+2026-03-08 11:01:46.208 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:01:46.210 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:01:46.211 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:01:46.212 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:01:46.213 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:01:46.214 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 11:01:46.595 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=46.51
+2026-03-08 11:01:46.749 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5655177.90 - 6911884.10]
+2026-03-08 11:01:46.962 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5655177.9 on coinswitchx
+2026-03-08 11:01:47.090 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5780848.52 on coinswitchx
+2026-03-08 11:01:47.211 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5906519.14 on coinswitchx
+2026-03-08 11:01:47.353 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6032189.76 on coinswitchx
+2026-03-08 11:01:47.480 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6157860.38 on coinswitchx
+2026-03-08 11:01:47.611 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6409201.62 on coinswitchx
+2026-03-08 11:01:47.737 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6534872.24 on coinswitchx
+2026-03-08 11:01:47.881 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6660542.86 on coinswitchx
+2026-03-08 11:01:47.999 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6786213.48 on coinswitchx
+2026-03-08 11:01:48.125 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6911884.1 on coinswitchx
+2026-03-08 11:01:48.125 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 11:01:48.348 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA skipped: RSI 46.7 > threshold 40.0
+2026-03-08 11:01:51.263 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 40s…
+2026-03-08 11:02:16.196 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:02:16.196 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:02:16.196 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:02:16.196 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:02:16.196 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:02:16.196 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 11:02:16.758 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.38
+2026-03-08 11:02:16.936 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712196.50 - 6981573.50]
+2026-03-08 11:02:17.139 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712196.5 on coinswitchx
+2026-03-08 11:02:17.276 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839134.2 on coinswitchx
+2026-03-08 11:02:17.385 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966071.9 on coinswitchx
+2026-03-08 11:02:17.522 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093009.6 on coinswitchx
+2026-03-08 11:02:17.641 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219947.3 on coinswitchx
+2026-03-08 11:02:17.751 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473822.7 on coinswitchx
+2026-03-08 11:02:17.889 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600760.4 on coinswitchx
+2026-03-08 11:02:18.018 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727698.1 on coinswitchx
+2026-03-08 11:02:18.137 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854635.8 on coinswitchx
+2026-03-08 11:02:18.272 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981573.5 on coinswitchx
+2026-03-08 11:02:18.272 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 11:02:18.668 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6346885.0000
+2026-03-08 11:02:18.920 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6346885.0 on coinswitchx
+2026-03-08 11:02:31.271 | WARNING  | app.websocket.listener:start:72 - WebSocket error: [Errno 11001] getaddrinfo failed. Reconnecting in 60s…
+2026-03-08 11:02:46.188 | WARNING  | app.strategies.base:__init__:58 - [ma_crossover] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:02:46.188 | WARNING  | app.strategies.base:__init__:58 - [rsi_strategy] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:02:46.188 | WARNING  | app.strategies.base:__init__:58 - [grid_trading] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:02:46.188 | WARNING  | app.strategies.base:__init__:58 - [dca_bot] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:02:46.188 | WARNING  | app.strategies.base:__init__:58 - [breakout] Symbol 'BTC/USDT' is inconsistent with exchange 'coinswitchx'. Using 'BTC/INR' instead.
+2026-03-08 11:02:46.188 | INFO     | app.strategies.engine:load_strategies:63 - Loaded 5 strategies: ['ma_crossover', 'rsi_strategy', 'grid_trading', 'dca_bot', 'breakout']
+2026-03-08 11:02:46.606 | INFO     | app.strategies.base:log:210 - [rsi_strategy] RSI: prev=40.54, curr=37.38
+2026-03-08 11:02:46.768 | INFO     | app.strategies.base:log:210 - [grid_trading] Grid initialized: 11 levels [5712196.50 - 6981573.50]
+2026-03-08 11:02:46.971 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5712196.5 on coinswitchx
+2026-03-08 11:02:47.091 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5839134.2 on coinswitchx
+2026-03-08 11:02:47.209 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 5966071.9 on coinswitchx
+2026-03-08 11:02:47.409 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6093009.6 on coinswitchx
+2026-03-08 11:02:47.628 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6219947.3 on coinswitchx
+2026-03-08 11:02:47.976 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6473822.7 on coinswitchx
+2026-03-08 11:02:48.243 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6600760.4 on coinswitchx
+2026-03-08 11:02:48.382 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6727698.1 on coinswitchx
+2026-03-08 11:02:48.522 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6854635.8 on coinswitchx
+2026-03-08 11:02:48.655 | INFO     | app.trading.spot:create_order:320 - [SIM] SELL 0.001 BTC/INR @ 6981573.5 on coinswitchx
+2026-03-08 11:02:48.656 | INFO     | app.strategies.base:log:210 - [grid_trading] Placed 10 initial grid orders
+2026-03-08 11:02:49.059 | INFO     | app.strategies.base:log:210 - [dca_bot] DCA buy #1/10 @ 6346885.0000
+2026-03-08 11:02:49.268 | INFO     | app.trading.spot:create_order:320 - [SIM] BUY 0.001 BTC/INR @ 6346885.0 on coinswitchx
+2026-03-08 11:03:02.143 | INFO     | main:lifespan:81 - Shutting down...
+2026-03-08 11:03:02.143 | INFO     | app.services.scheduler:stop_scheduler:39 - Scheduler stopped
+2026-03-08 11:03:02.144 | INFO     | app.websocket.listener:stop:176 - WebSocket listener stopped

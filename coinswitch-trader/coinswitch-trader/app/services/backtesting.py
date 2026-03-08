@@ -31,21 +31,37 @@ class BacktestResult:
     sharpe_ratio: float
     trades: list = field(default_factory=list)
 
+    @staticmethod
+    def _safe(value: float, ndigits: int = 2) -> float:
+        """Round a float and replace inf/NaN with a JSON-safe sentinel."""
+        import math
+        try:
+            v = round(float(value), ndigits)
+            if math.isnan(v) or math.isinf(v):
+                return 0.0
+            return v
+        except (TypeError, ValueError):
+            return 0.0
+
     def summary(self) -> dict:
+        s = self._safe
         return {
-            "strategy": self.strategy_name,
-            "symbol": self.symbol,
-            "timeframe": self.timeframe,
-            "period": f"{self.start_date} → {self.end_date}",
-            "initial_capital": self.initial_capital,
-            "final_capital": round(self.final_capital, 2),
-            "total_pnl": round(self.total_pnl, 2),
-            "total_pnl_pct": round(self.total_pnl_pct, 2),
-            "total_trades": self.total_trades,
-            "win_rate": round(self.win_rate, 2),
-            "profit_factor": round(self.profit_factor, 3),
-            "max_drawdown_pct": round(self.max_drawdown_pct, 2),
-            "sharpe_ratio": round(self.sharpe_ratio, 3),
+            "strategy":        self.strategy_name,
+            "symbol":          self.symbol,
+            "timeframe":       self.timeframe,
+            "period":          f"{self.start_date} → {self.end_date}",
+            "initial_capital": s(self.initial_capital, 2),
+            "final_capital":   s(self.final_capital, 2),
+            "total_pnl":       s(self.total_pnl, 2),
+            "total_pnl_pct":   s(self.total_pnl_pct, 2),
+            "total_trades":    self.total_trades,
+            "winning_trades":  self.winning_trades,
+            "losing_trades":   self.losing_trades,
+            "win_rate":        s(self.win_rate, 2),
+            # inf means all trades were winners — cap at 999 for display
+            "profit_factor":   s(min(self.profit_factor, 999.0), 3),
+            "max_drawdown_pct": s(self.max_drawdown_pct, 2),
+            "sharpe_ratio":    s(self.sharpe_ratio, 3),
         }
 
 
@@ -69,13 +85,28 @@ class BacktestEngine:
     ):
         self.df = pd.DataFrame(candles)
         if not self.df.empty:
+            # CoinSwitch candles API returns: start_time, close_time, o, h, l, c, volume
+            # Older/test data may use: openTime, t, open, high, low, close, v
             col_map = {
-                "openTime": "timestamp", "t": "timestamp",
-                "o": "open", "h": "high", "l": "low",
-                "c": "close", "v": "volume",
+                "start_time": "timestamp",
+                "openTime":   "timestamp",
+                "open_time":  "timestamp",
+                "t":          "timestamp",
+                "o":     "open",
+                "h":     "high",
+                "l":     "low",
+                "c":     "close",
+                "v":     "volume",
+                "vol":   "volume",
             }
             self.df = self.df.rename(columns={k: v for k, v in col_map.items() if k in self.df.columns})
-            for col in ["open", "high", "low", "close", "volume"]:
+            # If still no timestamp, fall back to close_time or synthetic index
+            if "timestamp" not in self.df.columns:
+                if "close_time" in self.df.columns:
+                    self.df["timestamp"] = self.df["close_time"]
+                else:
+                    self.df["timestamp"] = range(len(self.df))
+            for col in ["open", "high", "low", "close", "volume", "timestamp"]:
                 if col in self.df.columns:
                     self.df[col] = pd.to_numeric(self.df[col], errors="coerce")
             self.df = self.df.sort_values("timestamp").reset_index(drop=True)
@@ -171,7 +202,8 @@ class BacktestEngine:
         win_rate = len(winning) / len(sell_trades) * 100 if sell_trades else 0
         gross_profit = sum(t["pnl"] for t in winning)
         gross_loss = abs(sum(t["pnl"] for t in losing))
-        profit_factor = gross_profit / gross_loss if gross_loss > 0 else float("inf")
+        # Cap at 999 — float("inf") is not valid JSON
+        profit_factor = (gross_profit / gross_loss) if gross_loss > 0 else 999.0
 
         # Drawdown
         eq = np.array(equity_curve)
@@ -182,7 +214,8 @@ class BacktestEngine:
 
         # Sharpe ratio (simplified daily)
         returns = pd.Series(equity_curve).pct_change().dropna()
-        sharpe = (returns.mean() / returns.std() * np.sqrt(252)) if returns.std() > 0 else 0
+        raw_sharpe = (returns.mean() / returns.std() * np.sqrt(252)) if returns.std() > 0 else 0.0
+        sharpe = float(np.nan_to_num(raw_sharpe, nan=0.0, posinf=0.0, neginf=0.0))
 
         ts = df["timestamp"]
         start_date = str(ts.iloc[0]) if len(ts) > 0 else ""
